@@ -11,7 +11,7 @@ const UseImperativeHandle = lazy(() => import('../pages/demoManagement/imperativ
 const Wines = lazy(() => import('../pages/ordersManagement/wines'))
 const Fruit = lazy(() => import('../pages/ordersManagement/fruit'))
 const CascaderDemo = lazy(() => import('../pages/antdComp/cascader'))
-export const routes = [
+export const routes: Routes[] = [
     {
         path: '/login',
         component: Login,

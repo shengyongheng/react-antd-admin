@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import { HashRouter as Router } from 'react-router-dom'
 import { Provider } from 'mobx-react'
 import store from './store'
 import './styles/index.scss';
@@ -9,8 +10,10 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <Provider {...store}>
-    <Suspense fallback={<div>loading...</div>}>
-      <App />
-    </Suspense>
+    <Router>
+      <Suspense fallback={<div>loading...</div>}>
+        <App />
+      </Suspense>
+    </Router>
   </Provider>
 );
