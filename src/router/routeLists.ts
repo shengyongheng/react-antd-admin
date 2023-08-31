@@ -18,6 +18,7 @@ export const routes: Routes[] = [
         exact: true,
         meta: {
             title: '登录',
+            authRequired: ['users', 'admin'],
         }
     },
     {
@@ -29,6 +30,7 @@ export const routes: Routes[] = [
                 component: Home,
                 meta: {
                     title: '首页',
+                    authRequired: ['users', 'admin'],
                 }
             },
             {
@@ -36,6 +38,7 @@ export const routes: Routes[] = [
                 component: Admin,
                 meta: {
                     title: '管理员列表',
+                    authRequired: ['admin'],
                 }
             },
             {
@@ -43,6 +46,7 @@ export const routes: Routes[] = [
                 component: Vip,
                 meta: {
                     title: 'VIP列表',
+                    authRequired: ['admin'],
                 }
             },
             {
@@ -50,6 +54,7 @@ export const routes: Routes[] = [
                 component: Wines,
                 meta: {
                     title: '酒水管理',
+                    authRequired: ['users', 'admin'],
                 }
             },
             {
@@ -57,6 +62,7 @@ export const routes: Routes[] = [
                 component: Fruit,
                 meta: {
                     title: '水果管理',
+                    authRequired: ['admin'],
                 }
             },
             {
@@ -64,6 +70,7 @@ export const routes: Routes[] = [
                 component: Demo,
                 meta: {
                     title: 'DEMO',
+                    authRequired: ['users', 'admin'],
                 }
             },
             {
@@ -71,6 +78,7 @@ export const routes: Routes[] = [
                 component: Icons,
                 meta: {
                     title: 'DEMO',
+                    authRequired: ['users', 'admin'],
                 }
             },
             {
@@ -78,6 +86,7 @@ export const routes: Routes[] = [
                 component: UseRef,
                 meta: {
                     title: 'useRef',
+                    authRequired: ['users', 'admin'],
                 }
             },
             {
@@ -85,6 +94,7 @@ export const routes: Routes[] = [
                 component: UseImperativeHandle,
                 meta: {
                     title: 'UseImperativeHandle',
+                    authRequired: ['users', 'admin'],
                 }
             },
             {
@@ -92,6 +102,7 @@ export const routes: Routes[] = [
                 component: CascaderDemo,
                 meta: {
                     title: '级联选择器',
+                    authRequired: ['users', 'admin'],
                 }
             },
         ]

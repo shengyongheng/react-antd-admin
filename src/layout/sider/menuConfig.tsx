@@ -1,11 +1,11 @@
-import type { MenuProps } from 'antd';
 import { AppstoreOutlined, MailOutlined, SettingOutlined, PieChartOutlined } from '@ant-design/icons';
-type MenuItem = Required<MenuProps>['items'][number];
-export const items: MenuItem[] = [
+
+export const items: IMenuItem[] = [
     {
         key: '/home',
         label: '系统首页',
         icon: <PieChartOutlined />,
+        authRequired: ['users', 'admin'],
     },
     {
         key: 'users',
@@ -14,13 +14,16 @@ export const items: MenuItem[] = [
             {
                 key: '/users/admin',
                 label: '管理员列表',
+                authRequired: ['admin'],
             },
             {
                 key: '/users/vip',
                 label: 'VIP列表',
+                authRequired: ['admin'],
             }
         ],
         label: '人员管理',
+        authRequired: ['users', 'admin'],
     },
     {
         key: 'orders',
@@ -29,13 +32,23 @@ export const items: MenuItem[] = [
             {
                 key: '/orders/wines',
                 label: '酒水管理',
+                authRequired: ['users'],
             },
             {
                 key: '/orders/fruit',
                 label: '水果管理',
+                authRequired: ['admin'],
+                children: [
+                    {
+                        key: '/orders/fruit/watermelon',
+                        label: '西瓜管理',
+                        authRequired: ['users'],
+                    },
+                ]
             }
         ],
         label: '订单管理',
+        authRequired: ['users', 'admin'],
     },
     {
         key: 'demos',
@@ -44,21 +57,26 @@ export const items: MenuItem[] = [
             {
                 key: '/demos/demo',
                 label: 'Demo',
+                authRequired: ['users', 'admin'],
             },
             {
                 key: '/demos/icon',
                 label: 'Icons',
+                authRequired: ['users', 'admin'],
             },
             {
                 key: '/demos/useref',
                 label: 'UseRef',
+                authRequired: ['users', 'admin'],
             },
             {
                 key: '/demos/imperativeHandle',
                 label: 'UseImperativeHandle',
+                authRequired: ['users', 'admin'],
             },
         ],
         label: 'Demo管理',
+        authRequired: ['users', 'admin'],
     },
     {
         key: 'antd',
@@ -67,8 +85,10 @@ export const items: MenuItem[] = [
             {
                 key: '/antd/cascader',
                 label: '级联选择器',
+                authRequired: ['users', 'admin'],
             }
         ],
         label: 'Antd',
+        authRequired: ['users', 'admin'],
     },
 ];
