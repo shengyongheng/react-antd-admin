@@ -16,9 +16,22 @@
 .ant-layout-sider {
     height: 100vh;
     overflow: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 .ant-layout-sider,
 .ant-layout-header {
     background-color: #fff;
+}
+
+.ant-layout-footer,
+.ant-layout-header {
+    padding-left: 16px;
+}
+
+.ant-layout-content {
+    margin: 16px;
 }

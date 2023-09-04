@@ -15,6 +15,7 @@ function AppRouter(props: { routes: Routes[] }) {
                             exact={route.exact}
                             component={route.component}
                             routes={route.children}
+                            authRequired={route?.meta?.authRequired as string[]}
                         />
                     );
                 })}

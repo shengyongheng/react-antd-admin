@@ -10,6 +10,7 @@ const UseRef = lazy(() => import('../pages/demoManagement/useRef'))
 const UseImperativeHandle = lazy(() => import('../pages/demoManagement/imperativeHandle'))
 const Wines = lazy(() => import('../pages/ordersManagement/wines'))
 const Fruit = lazy(() => import('../pages/ordersManagement/fruit'))
+const AppleOrder = lazy(() => import('../pages/ordersManagement/fruit/pages/AppleOrder'))
 const CascaderDemo = lazy(() => import('../pages/antdComp/cascader'))
 export const routes: Routes[] = [
     {
@@ -60,6 +61,24 @@ export const routes: Routes[] = [
             {
                 path: '/orders/fruit',
                 component: Fruit,
+                children: [
+                    {
+                        path: '/orders/fruit/watermelon',
+                        component: '西瓜订单',
+                        meta: {
+                            title: '西瓜订单',
+                            authRequired: ['users'],
+                        }
+                    },
+                    {
+                        path: '/orders/fruit/apple',
+                        component: AppleOrder,
+                        meta: {
+                            title: '苹果订单',
+                            authRequired: ['users', 'admin'],
+                        }
+                    },
+                ],
                 meta: {
                     title: '水果管理',
                     authRequired: ['admin'],
@@ -105,6 +124,10 @@ export const routes: Routes[] = [
                     authRequired: ['users', 'admin'],
                 }
             },
-        ]
+        ],
+        meta: {
+            title: "系统",
+            authRequired: ['users', 'admin']
+        }
     }
 ];

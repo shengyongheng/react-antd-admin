@@ -22,15 +22,16 @@ const Sider: FC<IProps> = (props): React.JSX.Element => {
     }, []); // eslint-disable-line
 
     const getMenuItem = (items: IMenuItem[], userType: string) => {
-        items.forEach((item, index) => {
-            if (item.authRequired?.includes(userType)) {
-                if (!!item?.children) {
-                    getMenuItem(item?.children, userType)
+        for (let i = 0; i < items.length; i++) {
+            if (items[i].authRequired?.includes(userType)) {
+                if (!!items[i].children) {
+                    getMenuItem(items[i].children as IMenuItem[], userType)
                 }
             } else {
-                items.splice(index, 1)
+                items.splice(i, 1)
+                i--
             }
-        })
+        }
         return items
     }
 
@@ -60,11 +61,11 @@ const Sider: FC<IProps> = (props): React.JSX.Element => {
         <>
             <Menu
                 mode="inline"
-                openKeys={(openKeys as string[])}
-                selectedKeys={(selectedKeys as string[])}
+                // openKeys={(openKeys as string[])}
+                // selectedKeys={(selectedKeys as string[])}
                 style={{ width: '100%' }}
                 items={menuItems}
-                onOpenChange={onOpenChange}
+                // onOpenChange={onOpenChange}
                 onClick={onSwitchMenu}
             />
         </>
