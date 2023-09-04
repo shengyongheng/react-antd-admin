@@ -25,7 +25,13 @@ const Sider: FC<IProps> = (props): React.JSX.Element => {
         for (let i = 0; i < items.length; i++) {
             if (items[i].authRequired?.includes(userType)) {
                 if (!!items[i].children) {
-                    getMenuItem(items[i].children as IMenuItem[], userType)
+                    const children = items[i].children as IMenuItem[]
+                    const hasAuthChild = children.some(item => item.authRequired?.includes(userType))
+                    if (hasAuthChild) {
+                        getMenuItem(items[i].children as IMenuItem[], userType)
+                    } else {
+                        items.splice(i, 1)
+                    }
                 }
             } else {
                 items.splice(i, 1)

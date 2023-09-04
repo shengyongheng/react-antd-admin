@@ -37,7 +37,7 @@ export const items: IMenuItem[] = [
             {
                 key: '/orders/fruit',
                 label: '水果管理',
-                authRequired: ['admin'],
+                authRequired: ['users'],
                 children: [
                     {
                         key: '/orders/fruit/watermelon',
@@ -47,7 +47,7 @@ export const items: IMenuItem[] = [
                     {
                         key: '/orders/fruit/apple',
                         label: '苹果订单',
-                        authRequired: ['users', 'admin'],
+                        authRequired: ['users'],
                     },
                 ]
             }

@@ -19,7 +19,7 @@ const PrivateRoute: FC<IProps> = ({ component: Component, path, exact = false, a
             <Route path={path} exact={exact} render={(props: any) => (
                 !isLoggedIn
                     ? hasAuthRequired ? <Component {...props} routes={routes} /> :
-                        <Redirect to='*' />
+                        <Redirect path="*" to='/*' />
                     : <Redirect to='/login' />
             )} />
         </>

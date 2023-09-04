@@ -12,6 +12,7 @@ const Wines = lazy(() => import('../pages/ordersManagement/wines'))
 const Fruit = lazy(() => import('../pages/ordersManagement/fruit'))
 const AppleOrder = lazy(() => import('../pages/ordersManagement/fruit/pages/AppleOrder'))
 const CascaderDemo = lazy(() => import('../pages/antdComp/cascader'))
+const ErrorPage = lazy(() => import('../pages/errorPage'))
 export const routes: Routes[] = [
     {
         path: '/login',
@@ -75,13 +76,13 @@ export const routes: Routes[] = [
                         component: AppleOrder,
                         meta: {
                             title: '苹果订单',
-                            authRequired: ['users', 'admin'],
+                            authRequired: ['users'],
                         }
                     },
                 ],
                 meta: {
                     title: '水果管理',
-                    authRequired: ['admin'],
+                    authRequired: ['users'],
                 }
             },
             {
@@ -124,6 +125,14 @@ export const routes: Routes[] = [
                     authRequired: ['users', 'admin'],
                 }
             },
+            {
+                path: '/*',
+                component: ErrorPage,
+                meta: {
+                    title: '404',
+                    authRequired: ['users', 'admin']
+                }
+            }
         ],
         meta: {
             title: "系统",
