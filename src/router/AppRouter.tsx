@@ -24,4 +24,3 @@ function AppRouter(props: { routes: Routes[] }) {
     );
 }
 export default AppRouter;
-

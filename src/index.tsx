@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import { HashRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from 'mobx-react'
 import store from './store'
 import './styles/index.scss';

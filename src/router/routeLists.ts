@@ -15,15 +15,6 @@ const CascaderDemo = lazy(() => import('../pages/antdComp/cascader'))
 const ErrorPage = lazy(() => import('../pages/errorPage'))
 export const routes: Routes[] = [
     {
-        path: '/login',
-        component: Login,
-        exact: true,
-        meta: {
-            title: '登录',
-            authRequired: ['users', 'admin'],
-        }
-    },
-    {
         path: '/',
         component: Layouts,
         children: [

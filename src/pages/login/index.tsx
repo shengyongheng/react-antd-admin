@@ -1,15 +1,23 @@
 import React, { FC, useState, useEffect } from 'react';
-import { } from 'antd'
+import { Input, Button } from 'antd'
+import { useHistory } from 'react-router-dom';
 interface IProps {
 
 }
-const Component: FC = (props: IProps): React.JSX.Element => {
-
+const Login: FC = (props: IProps): React.JSX.Element => {
+    const history = useHistory()
+    const handleLogin = () => {
+        localStorage.setItem('userType', 'admin');
+        localStorage.setItem("token", 'test')
+        history.push({
+            pathname: '/users/vip'
+        })
+    }
     return (
         <>
-            Login
+            <Button onClick={handleLogin}>登录</Button>
         </>
     )
 }
 
-export default Component
+export default Login

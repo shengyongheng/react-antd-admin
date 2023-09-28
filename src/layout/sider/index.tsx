@@ -71,6 +71,7 @@ const Sider: FC<IProps> = (props): React.JSX.Element => {
                 // selectedKeys={(selectedKeys as string[])}
                 style={{ width: '100%' }}
                 items={menuItems}
+                defaultSelectedKeys={[window.location.pathname]}
                 // onOpenChange={onOpenChange}
                 onClick={onSwitchMenu}
             />
