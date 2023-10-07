@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react'
 import { Switch } from 'react-router-dom'
-import PrivateRoute from '../components/privateRoute'
+import PrivateRoute from '@components/privateRoute'
 
 function AppRouter (props: { routes: Routes[] }) {
   const { routes } = props
