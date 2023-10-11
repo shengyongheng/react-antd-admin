@@ -4,7 +4,7 @@ import "./index.scss"
 interface IProps {
 
 }
-const Component: FC = (props: IProps): React.JSX.Element => {
+const HomePage: FC = (props: IProps): React.JSX.Element => {
 
 
     return (
@@ -14,4 +14,4 @@ const Component: FC = (props: IProps): React.JSX.Element => {
     )
 }
 
-export default Component
+export default HomePage
