@@ -1,13 +1,6 @@
 export const path = require('path');
 const resolve = (dir: string) => path.resolve(__dirname, dir);
-const { addAfterLoader, loaderByName } = require("@craco/craco");
-
-const sassResourcesLoader = {
-    loader: require.resolve("sass-resources-loader"),
-    options: {
-        resources: [resolve("src/styles/index.scss")]
-    }
-};
+const cracoSassResourcesLoader = require('craco-sass-resources-loader')
 
 module.exports = {
     webpack: {
@@ -16,9 +9,13 @@ module.exports = {
             '@hooks': resolve('src/hooks'),
             '@utils': resolve('src/utils')
         },
-        configure: (webpackConfig: any) => {
-            addAfterLoader(webpackConfig, loaderByName("sass-loader"), sassResourcesLoader);
-            return webpackConfig;
+    },
+    plugins: [
+        {
+            plugin: cracoSassResourcesLoader,
+            options: {
+                resources: path.resolve(__dirname, 'src/styles/globalVars.scss')
+            }
         }
-    }
+    ]
 };

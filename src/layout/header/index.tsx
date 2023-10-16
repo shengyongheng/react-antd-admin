@@ -1,5 +1,6 @@
 import React, { FC, useState, useEffect } from 'react';
 import { } from 'antd'
+import styles from "./index.module.scss"
 interface IProps {
 
 }
@@ -8,7 +9,7 @@ const Header: FC<IProps> = (props): React.JSX.Element => {
     }, [])
 
     return (
-        <div className='header'>
+        <div className={styles['test']}>
             Header
         </div>
     )
