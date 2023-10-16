@@ -6,6 +6,7 @@
       "dom.iterable",
       "esnext"
     ],
+    // 路径提示
     "baseUrl": ".",
     "paths": {
       "@components/*": [
@@ -16,6 +17,9 @@
       ],
       "@utils/*": [
         "src/utils/*"
+      ],
+      "@styles/*": [
+        "src/styles/*"
       ]
     },
     "allowJs": true,
