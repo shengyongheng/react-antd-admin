@@ -40,7 +40,7 @@ const PrivateRoute: FC<IPrivateRouteProps> = ({
         path={path}
         exact={exact}
         render={(props: any) => {
-          console.log('<PrivateRoute />', 'props', props)
+          // console.log('<PrivateRoute />', 'props', props)
           return hasAuthRequired ? (
             <Component {...props} routes={routes} />
           ) : (
