@@ -8638,7 +8638,7 @@ sass-loader@^13.3.2:
   dependencies:
     neo-async "^2.6.2"
 
-sass-resources-loader@^2.0.0, sass-resources-loader@^2.2.5:
+sass-resources-loader@^2.0.0:
   version "2.2.5"
   resolved "https://repo.datagrand.com/repository/npm-group/sass-resources-loader/-/sass-resources-loader-2.2.5.tgz"
   integrity sha512-po8rfETH9cOQACWxubT/1CCu77KjxwRtCDm6QAXZH99aUHBydwSoxdIjC40SGp/dcS/FkSNJl0j1VEojGZqlvQ==
