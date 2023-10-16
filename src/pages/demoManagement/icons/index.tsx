@@ -1,7 +1,7 @@
 import React, { FC, useState, useEffect } from 'react';
 import { useHistory, useParams } from "react-router-dom"
 import { observer } from "mobx-react-lite"
-import { useStore } from "../../../store"
+import { useStore } from "../../../mobx-store"
 import { Button } from 'antd'
 import {
     UserOutlined,

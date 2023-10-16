@@ -1,6 +1,8 @@
 import React, { FC, useState, useEffect } from 'react'
-import { Button, Form, Input } from 'antd';
+import { Button } from 'antd';
 import { useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { setToken } from "../../redux-store/user/action";
 import { userNameReg, passwordReg } from "@utils/regExps"
 import { UserOutlined } from '@ant-design/icons';
 import CommonForm from "@components/antdForm"
@@ -82,9 +84,11 @@ const Login: FC = (props: IProps): React.JSX.Element => {
     ]
   );
   const history = useHistory()
+  const dispatch = useDispatch();
   const handleSubmit = () => {
     localStorage.setItem('userType', 'admin')
-    localStorage.setItem('token', 'test')
+    localStorage.setItem('token', 'test');
+    dispatch(setToken('test'));
     history.push({
       pathname: '/home'
     })
