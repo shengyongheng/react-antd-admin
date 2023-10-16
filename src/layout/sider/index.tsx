@@ -1,7 +1,7 @@
 import React, { FC, useEffect, Dispatch, SetStateAction, useState } from 'react';
 import type { MenuProps } from 'antd';
 import { useHistory } from "react-router-dom"
-import { useOpenSelectKeys } from '../../hooks/useOpenSelectKeys'
+import { useOpenSelectKeys } from '@hooks/useOpenSelectKeys'
 import { Menu } from 'antd';
 import { items } from './menuConfig';
 
@@ -14,12 +14,11 @@ const Sider: FC<IProps> = (props): React.JSX.Element => {
     const history = useHistory();
     const [openKeys, selectedKeys, setOpenKeys] = useOpenSelectKeys(history);
     const [menuItems, setMenuItems] = useState<Array<IMenuItem>>();
-
     useEffect(() => {
         const userType = localStorage.getItem('userType');
         const menuItems = deleteAuthPro(getMenuItem(items, userType as string))
         setMenuItems(menuItems)
-    }, []); // eslint-disable-line
+    }, [items]); // eslint-disable-line
 
     const getMenuItem = (items: IMenuItem[], userType: string) => {
         for (let i = 0; i < items.length; i++) {
