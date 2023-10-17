@@ -85,7 +85,7 @@ const Login: FC = (props: IProps): React.JSX.Element => {
   const history = useHistory()
   const dispatch = useDispatch();
   const handleSubmit = () => {
-    localStorage.setItem('userType', 'admin')
+    localStorage.setItem('userType', 'users')
     localStorage.setItem('token', 'test');
     dispatch(setToken('test'));
     history.push({

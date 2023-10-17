@@ -13,21 +13,21 @@ const rootSubmenuKeys = ['users', 'orders', 'demos'];
 const Sider: FC<IProps> = (props): React.JSX.Element => {
     const history = useHistory();
     const [openKeys, selectedKeys, setOpenKeys] = useOpenSelectKeys(history);
-    const [menuItems, setMenuItems] = useState<Array<IMenuItem>>();
+    const [menuItems, setMenuItems] = useState<MenuItemWithAuth>();
     useEffect(() => {
         const userType = localStorage.getItem('userType');
         const menuItems = deleteAuthPro(getMenuItem(items, userType as string))
         setMenuItems(menuItems)
     }, [items]); // eslint-disable-line
 
-    const getMenuItem = (items: IMenuItem[], userType: string) => {
+    const getMenuItem = (items: MenuItemWithAuth, userType: string) => {
         for (let i = 0; i < items.length; i++) {
             if (items[i].authRequired?.includes(userType)) {
                 if (!!items[i].children) {
-                    const children = items[i].children as IMenuItem[]
+                    const children = items[i].children as MenuItemWithAuth
                     const hasAuthChild = children.some(item => item.authRequired?.includes(userType))
                     if (hasAuthChild) {
-                        getMenuItem(items[i].children as IMenuItem[], userType)
+                        getMenuItem(items[i].children as MenuItemWithAuth, userType)
                     } else {
                         items.splice(i, 1)
                     }
@@ -40,7 +40,7 @@ const Sider: FC<IProps> = (props): React.JSX.Element => {
         return items
     }
 
-    const deleteAuthPro = (items: IMenuItem[]) => {
+    const deleteAuthPro = (items: MenuItemWithAuth) => {
         items.forEach((item) => {
             delete item.authRequired
             if (!!item.children) {

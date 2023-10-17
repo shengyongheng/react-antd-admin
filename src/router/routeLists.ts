@@ -12,6 +12,9 @@ const UseImperativeHandle = lazy(
 )
 const Wines = lazy(() => import('../pages/ordersManagement/wines'))
 const Fruit = lazy(() => import('../pages/ordersManagement/fruit'))
+const WatermelonOrder = lazy(
+  () => import('../pages/ordersManagement/fruit/pages/WatermelonOrder')
+)
 const AppleOrder = lazy(
   () => import('../pages/ordersManagement/fruit/pages/AppleOrder')
 )
@@ -74,7 +77,7 @@ export const routes: Routes[] = [
         children: [
           {
             path: '/orders/fruit/watermelon',
-            component: '西瓜订单',
+            component: WatermelonOrder,
             whiteRoute: false,
             meta: {
               title: '西瓜订单',

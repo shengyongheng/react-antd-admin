@@ -2,7 +2,7 @@ import React, { Suspense } from 'react'
 import { Switch } from 'react-router-dom'
 import PrivateRoute from '@components/privateRoute'
 
-function AppRouter (props: { routes: Routes[] }) {
+function AppRouter(props: { routes: Routes[] }) {
   const { routes } = props
   return (
     <Suspense fallback={<h1>loading...</h1>}>
