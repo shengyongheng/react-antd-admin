@@ -6,11 +6,10 @@ import { setToken } from "../../redux-store/user/action";
 import { userNameReg, passwordReg } from "@utils/regExps"
 import { UserOutlined } from '@ant-design/icons';
 import CommonForm from "@components/antdForm"
-import { ICommonFormProps, IFormItemProps } from "@components/antdForm/models"
+import { ICommonFormProps } from "@components/antdForm/models"
 interface IProps { }
 const Login: FC = (props: IProps): React.JSX.Element => {
-  // Pick<ICommonFormProps, 'formItems'>
-  const [loginFormItems, setLoginFormItems] = useState<IFormItemProps[]>(
+  const [loginFormItems, setLoginFormItems] = useState<ICommonFormProps['formItems']>(
     [
       {
         label: '用户名',
