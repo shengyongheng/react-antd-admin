@@ -1,4 +1,4 @@
-import React, { FC, useEffect, Dispatch, SetStateAction, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import type { MenuProps } from 'antd';
 import { useHistory } from "react-router-dom"
 import { useOpenSelectKeys } from '@hooks/useOpenSelectKeys'
@@ -53,9 +53,9 @@ const Sider: FC<IProps> = (props): React.JSX.Element => {
     const onOpenChange: MenuProps['onOpenChange'] = (keys) => {
         const latestOpenKey = keys.find((key) => (openKeys as string[]).indexOf(key) === -1);
         if (rootSubmenuKeys.indexOf(latestOpenKey!) === -1) {
-            (setOpenKeys as Dispatch<SetStateAction<string[]>>)(keys);
+            (setOpenKeys as setStateProp<string[]>)(keys);
         } else {
-            (setOpenKeys as Dispatch<SetStateAction<string[]>>)(latestOpenKey ? [latestOpenKey] : []);
+            (setOpenKeys as setStateProp<string[]>)(latestOpenKey ? [latestOpenKey] : []);
         }
     };
     const onSwitchMenu = (menuItem: { key: string }) => {
@@ -66,12 +66,12 @@ const Sider: FC<IProps> = (props): React.JSX.Element => {
         <>
             <Menu
                 mode="inline"
-                // openKeys={(openKeys as string[])}
-                // selectedKeys={(selectedKeys as string[])}
-                style={{ width: '100%' }}
                 items={menuItems}
+                style={{ width: '100%' }}
+                openKeys={(openKeys as string[])}
+                selectedKeys={(selectedKeys as string[])}
                 defaultSelectedKeys={[window.location.pathname]}
-                // onOpenChange={onOpenChange}
+                onOpenChange={onOpenChange}
                 onClick={onSwitchMenu}
             />
         </>
