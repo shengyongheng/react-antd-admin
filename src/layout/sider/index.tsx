@@ -9,7 +9,7 @@ interface IProps {
 
 }
 // submenu keys of first level
-const rootSubmenuKeys = ['users', 'orders', 'demos'];
+const rootSubmenuKeys = ['/users', '/orders', '/demos', '/antd'];
 const Sider: FC<IProps> = (props): React.JSX.Element => {
     const history = useHistory();
     const [openKeys, selectedKeys, setOpenKeys] = useOpenSelectKeys(history);

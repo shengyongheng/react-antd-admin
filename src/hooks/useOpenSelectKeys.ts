@@ -4,8 +4,7 @@ export const useOpenSelectKeys = (history: any) => {
     const [openKeys, setOpenKeys] = useState(['']);
     const [selectedKeys, setSelectedKeys] = useState(['/']);
     const onSetOpenSelectedKeys = (pathname: string) => {
-        let openKey = pathname.split("/")[1];
-        setOpenKeys([openKey])
+        setOpenKeys(['/' + pathname.split("/")[1]])
         setSelectedKeys([pathname])
     }
     useEffect(() => {

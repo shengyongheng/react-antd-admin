@@ -25,7 +25,7 @@ export const items: MenuItemWithAuth = [
         authRequired: ['users', 'admin'],
     },
     {
-        key: 'users',
+        key: '/users',
         icon: <AppstoreOutlined />,
         children: [
             {
@@ -43,7 +43,7 @@ export const items: MenuItemWithAuth = [
         authRequired: ['users', 'admin'],
     },
     {
-        key: 'orders',
+        key: '/orders',
         icon: <MailOutlined />,
         children: [
             {
@@ -73,7 +73,7 @@ export const items: MenuItemWithAuth = [
         authRequired: ['users', 'admin'],
     },
     {
-        key: 'demos',
+        key: '/demos',
         icon: <SettingOutlined />,
         children: [
             {
@@ -101,7 +101,7 @@ export const items: MenuItemWithAuth = [
         authRequired: ['users', 'admin'],
     },
     {
-        key: 'antd',
+        key: '/antd',
         icon: <MailOutlined />,
         children: [
             {
