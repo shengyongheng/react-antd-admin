@@ -1,7 +1,8 @@
 import React, { FC, useState, useEffect } from 'react'
-import { Form, Input, Select } from 'antd';
+import { Form, Input, Checkbox, Select, InputNumber, DatePicker } from 'antd';
 import { ICommonFormProps, IItemTypes } from "./models"
 const { Password } = Input
+const { RangePicker } = DatePicker;
 const CommonForm = (props: ICommonFormProps): React.JSX.Element => {
     const {
         formItems,
@@ -16,11 +17,15 @@ const CommonForm = (props: ICommonFormProps): React.JSX.Element => {
             case 'Input': return <Input {...itemProps} />;
             case 'Password': return <Password {...itemProps} />;
             case 'Select': return <Select {...itemProps} />;
+            case 'RangePicker': return <RangePicker {...itemProps} />;
+            case 'Checkbox': return <Checkbox.Group  {...itemProps} />;
+            case 'InputNumber': return <InputNumber {...itemProps} />;
             default: return null;
         }
     }
 
     const onFinish = (value: any) => {
+        console.log('表单数据', value);
         form.validateFields().then(v => {
             handleSubmit()
         }).catch(err => {

@@ -1,6 +1,6 @@
 import React from "react"
 
-export type IItemTypes = 'Input' | 'Password' | 'Select'
+export type IItemTypes = 'Input' | 'Password' | 'Select' | 'RangePicker' | 'Checkbox' | 'InputNumber'
 
 interface IFormItemProps {
     label: React.ReactNode

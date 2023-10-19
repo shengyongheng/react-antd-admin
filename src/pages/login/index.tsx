@@ -66,10 +66,41 @@ const Login: FC = (props: IProps): React.JSX.Element => {
         name: 'city',
         itemType: 'Select',
         props: {
+          // 动态选项
           options: cityLists,
           placeholder: '请选择城市'
         }
       },
+      {
+        label: '时间范围',
+        name: 'rangePicker',
+        itemType: 'RangePicker',
+        props: {
+          placeholder: ['开始时间', '结束时间']
+        }
+      },
+      {
+        label: '水果',
+        name: 'fruits',
+        itemType: 'Checkbox',
+        props: {
+          // 固定选项
+          options: [
+            { label: 'Apple', value: 'Apple' },
+            { label: 'Pear', value: 'Pear' },
+            { label: 'Orange', value: 'Orange' },
+          ]
+        }
+      },
+      {
+        label: '数字输入框',
+        name: 'inputNumber',
+        itemType: "InputNumber",
+        props: {
+          min: 1,
+          max: 10,
+        }
+      }
     ]
   }, [cityLists])
   const history = useHistory()
