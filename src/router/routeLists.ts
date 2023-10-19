@@ -16,8 +16,9 @@ const WatermelonOrder = lazy(
   () => import('../pages/ordersManagement/fruit/pages/WatermelonOrder')
 )
 const AppleOrder = lazy(
-  () => import('../pages/ordersManagement/fruit/pages/AppleOrder')
+  () => import('../pages/ordersManagement/fruit/pages/appleOrder')
 )
+const AppleOrderDetail = lazy(() => import('../pages/ordersManagement/fruit/pages/appleOrder/components/appleOrderDetail/index'))
 const CascaderDemo = lazy(() => import('../pages/antdComp/cascader'))
 const ErrorPage = lazy(() => import('../pages/errorPage'))
 export const routes: Routes[] = [
@@ -85,14 +86,34 @@ export const routes: Routes[] = [
             }
           },
           {
+            path: '/orders/fruit/apple/detail/:id',
+            component: AppleOrderDetail,
+            whiteRoute: false,
+            meta: {
+              title: '苹果订单详情',
+              authRequired: ['users']
+            }
+          },
+          {
             path: '/orders/fruit/apple',
             component: AppleOrder,
             whiteRoute: false,
+            // children: [
+            //   {
+            //     path: '/orders/fruit/apple/detail/:id',
+            //     component: AppleOrderDetail,
+            //     whiteRoute: false,
+            //     meta: {
+            //       title: '苹果订单详情',
+            //       authRequired: ['users']
+            //     }
+            //   },
+            // ],
             meta: {
               title: '苹果订单',
               authRequired: ['users']
             }
-          }
+          },
         ],
         meta: {
           title: '水果管理',

@@ -43,7 +43,7 @@ const BreadCrumb: FC = (props: IProps): ReactElement => {
 
     const getChildrenItems = (items: any, breadCrumbItems: IBreadCrumbProp[], pathname: any) => {
         const matchedRoute = items.find((item: any) => pathname.includes(item.key)) // /orders/fruit/watermelon
-        breadCrumbItems.push(matchedRoute)
+        !matchedRoute.undisplay && breadCrumbItems.push(matchedRoute)
         if (!!matchedRoute?.children?.length) {
             getChildrenItems(matchedRoute.children, breadCrumbItems, pathname)
         }
@@ -56,13 +56,6 @@ const BreadCrumb: FC = (props: IProps): ReactElement => {
             history.push(key)
         }
     }
-
-    const dropdownClick = ({ children, key }: IBreadCrumbProp) => {
-        console.log(key, 'key-dropdownClick');
-        if (!children && pathname !== key) {
-            history.push(key)
-        }
-    }
     return (
         <div className={styles['breadcrumb-container']}>
             <Breadcrumb>
@@ -70,7 +63,7 @@ const BreadCrumb: FC = (props: IProps): ReactElement => {
                     breadCrumbItems.map(item =>
                         <Breadcrumb.Item key={item.key}
                             // 下拉菜单配置
-                            {...(item?.children && { menu: { items: item.children || [], onClick: dropdownClick } })}
+                            {...(item?.children && { menu: { items: item.children || [], onClick: breadCrumbClick } })}
                             onClick={() => {
                                 breadCrumbClick(item)
                             }}>
