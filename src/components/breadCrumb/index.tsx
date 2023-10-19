@@ -14,6 +14,7 @@ type IBreadCrumbProp = { key: string; label: React.ReactNode; children?: any; on
 const BreadCrumb: FC = (props: IProps): ReactElement => {
     const history = useHistory()
     const location = useLocation()
+    const { pathname } = location
     const [breadCrumbItems, setBreadCrumbItems] = useState<IBreadCrumbProp[]>([]);
 
     useEffect(() => {
@@ -35,7 +36,6 @@ const BreadCrumb: FC = (props: IProps): ReactElement => {
     }
 
     const getBreadCrumbItems: (items: MenuItemWithAuth) => IBreadCrumbProp[] = (items) => {
-        const { pathname } = location;
         const breadCrumbItems: IBreadCrumbProp[] = [];
         getChildrenItems(deleteMenuConfigPro(items), breadCrumbItems, pathname)
         return breadCrumbItems
@@ -50,21 +50,21 @@ const BreadCrumb: FC = (props: IProps): ReactElement => {
         return breadCrumbItems
     }
 
-    const breadCrumbClick = (item: IBreadCrumbProp) => {
-        console.log(item, 'item-breadCrumbClick');
-        if (!item.children) {
-            history.push(item.key)
+    const breadCrumbClick = ({ children, key }: IBreadCrumbProp) => {
+        console.log(key, 'key-breadCrumbClick');
+        if (!children && pathname !== key) {
+            history.push(key)
         }
     }
 
-    const dropdownClick = (item: IBreadCrumbProp) => {
-        console.log(item, 'item-dropdownClick');
-        if (!item.children) {
-            history.push(item.key)
+    const dropdownClick = ({ children, key }: IBreadCrumbProp) => {
+        console.log(key, 'key-dropdownClick');
+        if (!children && pathname !== key) {
+            history.push(key)
         }
     }
     return (
-        <>
+        <div className={styles['breadcrumb-container']}>
             <Breadcrumb>
                 {
                     breadCrumbItems.map(item =>
@@ -79,7 +79,7 @@ const BreadCrumb: FC = (props: IProps): ReactElement => {
                     )
                 }
             </Breadcrumb>
-        </>
+        </div>
     )
 }
 

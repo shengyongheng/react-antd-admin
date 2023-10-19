@@ -1,0 +1,7 @@
+.breadcrumb-container {
+    :global {
+        .ant-breadcrumb-link {
+            cursor: pointer;
+        }
+    }
+}
