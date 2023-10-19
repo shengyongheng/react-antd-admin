@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react'
+import React, { FC, useState, useEffect, useMemo } from 'react'
 import { Button } from 'antd';
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
@@ -9,8 +9,11 @@ import CommonForm from "@components/antdForm"
 import { ICommonFormProps } from "@components/antdForm/models"
 interface IProps { }
 const Login: FC = (props: IProps): React.JSX.Element => {
-  const [loginFormItems, setLoginFormItems] = useState<ICommonFormProps['formItems']>(
-    [
+  // 城市列表
+  const [cityLists, setCityLists] = useState<{ label: string; value: string }[]>([]);
+  // 登录表单
+  const loginFormItems = useMemo<ICommonFormProps['formItems']>(() => {
+    return [
       {
         label: '用户名',
         name: 'username',
@@ -63,25 +66,12 @@ const Login: FC = (props: IProps): React.JSX.Element => {
         name: 'city',
         itemType: 'Select',
         props: {
-          options: [
-            {
-              value: 'HangZhou',
-              label: 'HangZhou #310000',
-            },
-            {
-              value: 'NingBo',
-              label: 'NingBo #315000',
-            },
-            {
-              value: 'WenZhou',
-              label: 'WenZhou #325000',
-            },
-          ],
+          options: cityLists,
           placeholder: '请选择城市'
         }
       },
     ]
-  );
+  }, [cityLists])
   const history = useHistory()
   const dispatch = useDispatch();
   const handleSubmit = () => {
@@ -92,6 +82,27 @@ const Login: FC = (props: IProps): React.JSX.Element => {
       pathname: '/home'
     })
   }
+
+  // 获取城市列表
+  useEffect(() => {
+    setTimeout(() => {
+      setCityLists([
+        {
+          value: 'HangZhou',
+          label: 'HangZhou #310000',
+        },
+        {
+          value: 'NingBo',
+          label: 'NingBo #315000',
+        },
+        {
+          value: 'WenZhou',
+          label: 'WenZhou #325000',
+        },
+      ]);
+    }, 2000)
+  }, []);
+
   return (
     <div className='user-login'>
       <CommonForm formItems={loginFormItems} handleSubmit={handleSubmit}>
