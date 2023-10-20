@@ -1,9 +1,12 @@
 import React, { FC, useEffect, useState } from 'react';
 import type { MenuProps } from 'antd';
 import { useHistory } from "react-router-dom"
+import * as Icons from '@ant-design/icons'
 import { useOpenSelectKeys } from '@hooks/useOpenSelectKeys'
 import { Menu } from 'antd';
 import { items } from './menuConfig';
+
+const iconList: any = Icons
 
 interface IProps {
 
@@ -16,7 +19,8 @@ const Sider: FC<IProps> = (props): React.JSX.Element => {
     const [menuItems, setMenuItems] = useState<MenuItemWithAuth>();
     useEffect(() => {
         const userType = localStorage.getItem('userType');
-        const menuItems = deleteAuthPro(getMenuItem(items, userType as string))
+        // 1. 获取有权限的菜单列表 2. 删除 authRequired 属性 3. 添加菜单 icon
+        const menuItems = addIconToMenu(deleteAuthPro(getMenuItem(items, userType as string)))
         setMenuItems(menuItems)
     }, [items]); // eslint-disable-line
 
@@ -37,6 +41,24 @@ const Sider: FC<IProps> = (props): React.JSX.Element => {
                 i--
             }
         }
+        return items
+    }
+
+    /**
+     * 菜单列表添加icon
+     * @param items 菜单列表
+     * @returns
+     */
+    function addIconToMenu(items: MenuItemWithAuth) {
+        for (let i = 0; i < items.length; i++) {
+            if (!!items[i].icon) {
+                items[i].icon = React.createElement(iconList[items[i].icon])
+            }
+            if (!!items[i].children) {
+                items[i].children = addIconToMenu(items[i].children)
+            }
+        }
+
         return items
     }
 

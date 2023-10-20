@@ -1,4 +1,4 @@
-import { AppstoreOutlined, MailOutlined, SettingOutlined, PieChartOutlined } from '@ant-design/icons';
+// import { AppstoreOutlined, MailOutlined, SettingOutlined, PieChartOutlined } from '@ant-design/icons';
 
 // type MenuItem = Required<MenuProps>['items'][number];
 
@@ -21,12 +21,12 @@ export const items: MenuItemWithAuth = [
     {
         key: '/home',
         label: '系统首页',
-        icon: <PieChartOutlined />,
+        icon: 'PieChartOutlined',
         authRequired: ['users', 'admin'],
     },
     {
         key: '/users',
-        icon: <AppstoreOutlined />,
+        icon: 'AppstoreOutlined',
         children: [
             {
                 key: '/users/admin',
@@ -44,7 +44,7 @@ export const items: MenuItemWithAuth = [
     },
     {
         key: '/orders',
-        icon: <MailOutlined />,
+        icon: 'MailOutlined',
         children: [
             {
                 key: '/orders/wines',
@@ -82,7 +82,7 @@ export const items: MenuItemWithAuth = [
     },
     {
         key: '/demos',
-        icon: <SettingOutlined />,
+        icon: 'SettingOutlined',
         children: [
             {
                 key: '/demos/demo',
@@ -110,7 +110,7 @@ export const items: MenuItemWithAuth = [
     },
     {
         key: '/antd',
-        icon: <MailOutlined />,
+        icon: 'MailOutlined',
         children: [
             {
                 key: '/antd/cascader',
