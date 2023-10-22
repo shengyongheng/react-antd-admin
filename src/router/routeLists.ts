@@ -86,7 +86,7 @@ export const routes: Routes[] = [
             }
           },
           {
-            path: '/orders/fruit/apple/detail/:id',
+            path: '/orders/fruit/apple/detail',
             component: AppleOrderDetail,
             whiteRoute: false,
             meta: {
@@ -100,7 +100,7 @@ export const routes: Routes[] = [
             whiteRoute: false,
             // children: [
             //   {
-            //     path: '/orders/fruit/apple/detail/:id',
+            //     path: '/orders/fruit/apple/detail',
             //     component: AppleOrderDetail,
             //     whiteRoute: false,
             //     meta: {

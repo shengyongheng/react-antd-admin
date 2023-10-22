@@ -9,7 +9,7 @@ interface Routes {
   exact?: boolean
   whiteRoute: boolean
   children?: Routes[]
-  meta?: {
+  meta: {
     title: string
     authRequired?: Array<string>
   }
