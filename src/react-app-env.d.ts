@@ -5,13 +5,15 @@ type IUserType = Array<'users' | 'admin'>
 
 interface Routes {
   path: string
-  component: any
+  component?: any
   exact?: boolean
   whiteRoute: boolean
   children?: Routes[]
-  meta?: {
+  meta: {
     title: string
     authRequired?: Array<string>
+    parent?: string
+    parentKey?: string
   }
 }
 

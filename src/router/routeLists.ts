@@ -50,7 +50,9 @@ export const routes: Routes[] = [
         whiteRoute: false,
         meta: {
           title: '管理员列表',
-          authRequired: ['admin']
+          authRequired: ['admin'],
+          parent: '人员管理',
+          parentKey: '/users'
         }
       },
       {
@@ -59,7 +61,9 @@ export const routes: Routes[] = [
         whiteRoute: false,
         meta: {
           title: 'VIP列表',
-          authRequired: ['admin']
+          authRequired: ['admin'],
+          parent: '人员管理',
+          parentKey: '/users'
         }
       },
       {
@@ -68,7 +72,9 @@ export const routes: Routes[] = [
         whiteRoute: false,
         meta: {
           title: '酒水管理',
-          authRequired: ['users', 'admin']
+          authRequired: ['users', 'admin'],
+          parent: '订单管理',
+          parentKey: '/orders'
         }
       },
       {
@@ -82,42 +88,37 @@ export const routes: Routes[] = [
             whiteRoute: false,
             meta: {
               title: '西瓜订单',
-              authRequired: ['users']
+              authRequired: ['users'],
+              parent: '水果管理',
+              parentKey: '/orders/fruit',
             }
           },
           {
-            path: '/orders/fruit/apple/detail/:id',
+            path: '/orders/fruit/apple/detail',
             component: AppleOrderDetail,
             whiteRoute: false,
             meta: {
               title: '苹果订单详情',
-              authRequired: ['users']
+              authRequired: ['users'],
             }
           },
           {
             path: '/orders/fruit/apple',
             component: AppleOrder,
             whiteRoute: false,
-            // children: [
-            //   {
-            //     path: '/orders/fruit/apple/detail/:id',
-            //     component: AppleOrderDetail,
-            //     whiteRoute: false,
-            //     meta: {
-            //       title: '苹果订单详情',
-            //       authRequired: ['users']
-            //     }
-            //   },
-            // ],
             meta: {
               title: '苹果订单',
-              authRequired: ['users']
+              authRequired: ['users'],
+              parent: '水果管理',
+              parentKey: '/orders/fruit',
             }
           },
         ],
         meta: {
           title: '水果管理',
-          authRequired: ['users']
+          authRequired: ['users'],
+          parent: '订单管理',
+          parentKey: '/orders'
         }
       },
       {
@@ -126,7 +127,9 @@ export const routes: Routes[] = [
         whiteRoute: false,
         meta: {
           title: 'DEMO',
-          authRequired: ['users', 'admin']
+          authRequired: ['users', 'admin'],
+          parent: 'DEMOS',
+          parentKey: '/demos'
         }
       },
       {
@@ -134,8 +137,10 @@ export const routes: Routes[] = [
         component: Icons,
         whiteRoute: false,
         meta: {
-          title: 'DEMO',
-          authRequired: ['users', 'admin']
+          title: 'ICON',
+          authRequired: ['users', 'admin'],
+          parent: 'DEMOS',
+          parentKey: '/demos'
         }
       },
       {
@@ -144,7 +149,9 @@ export const routes: Routes[] = [
         whiteRoute: false,
         meta: {
           title: 'useRef',
-          authRequired: ['users', 'admin']
+          authRequired: ['users', 'admin'],
+          parent: 'DEMOS',
+          parentKey: '/demos'
         }
       },
       {
@@ -153,7 +160,9 @@ export const routes: Routes[] = [
         whiteRoute: false,
         meta: {
           title: 'UseImperativeHandle',
-          authRequired: ['users', 'admin']
+          authRequired: ['users', 'admin'],
+          parent: 'DEMOS',
+          parentKey: '/demos'
         }
       },
       {
@@ -162,7 +171,9 @@ export const routes: Routes[] = [
         whiteRoute: false,
         meta: {
           title: '级联选择器',
-          authRequired: ['users', 'admin']
+          authRequired: ['users', 'admin'],
+          parent: 'Antd',
+          parentKey: '/antd'
         }
       },
       {
@@ -181,3 +192,204 @@ export const routes: Routes[] = [
     }
   }
 ]
+
+// export const routes: Routes[] = [
+//   {
+//     path: '/login',
+//     component: Login,
+//     whiteRoute: true,
+//     meta: {
+//       title: '登录',
+//     }
+//   },
+//   {
+//     path: '/',
+//     component: Layouts,
+//     whiteRoute: false,
+//     children: [
+//       {
+//         path: '/home',
+//         component: Home,
+//         whiteRoute: false,
+//         meta: {
+//           title: '首页',
+//           authRequired: ['users', 'admin']
+//         }
+//       },
+//       {
+//         path: '/user',
+//         whiteRoute: false,
+//         children: [
+//           {
+//             path: '/users/admin',
+//             component: Admin,
+//             whiteRoute: false,
+//             meta: {
+//               title: '管理员列表',
+//               authRequired: ['admin']
+//             }
+//           },
+//           {
+//             path: '/users/vip',
+//             component: Vip,
+//             whiteRoute: false,
+//             meta: {
+//               title: 'VIP列表',
+//               authRequired: ['admin']
+//             }
+//           },
+//         ],
+//         meta: {
+//           title: '人员管理',
+//           authRequired: ['users', 'admin'],
+//         }
+//       },
+//       {
+//         path: '/orders',
+//         whiteRoute: false,
+//         children: [
+//           {
+//             path: '/orders/wines',
+//             component: Wines,
+//             whiteRoute: false,
+//             meta: {
+//               title: '酒水管理',
+//               authRequired: ['users', 'admin']
+//             }
+//           },
+//           {
+//             path: '/orders/fruit',
+//             component: Fruit,
+//             whiteRoute: false,
+//             children: [
+//               {
+//                 path: '/orders/fruit/watermelon',
+//                 component: WatermelonOrder,
+//                 whiteRoute: false,
+//                 meta: {
+//                   title: '西瓜订单',
+//                   authRequired: ['users']
+//                 }
+//               },
+//               {
+//                 path: '/orders/fruit/apple/detail/:id',
+//                 component: AppleOrderDetail,
+//                 whiteRoute: false,
+//                 meta: {
+//                   title: '苹果订单详情',
+//                   authRequired: ['users']
+//                 }
+//               },
+//               {
+//                 path: '/orders/fruit/apple',
+//                 component: AppleOrder,
+//                 whiteRoute: false,
+//                 // children: [
+//                 //   {
+//                 //     path: '/orders/fruit/apple/detail/:id',
+//                 //     component: AppleOrderDetail,
+//                 //     whiteRoute: false,
+//                 //     meta: {
+//                 //       title: '苹果订单详情',
+//                 //       authRequired: ['users']
+//                 //     }
+//                 //   },
+//                 // ],
+//                 meta: {
+//                   title: '苹果订单',
+//                   authRequired: ['users']
+//                 }
+//               },
+//             ],
+//             meta: {
+//               title: '水果管理',
+//               authRequired: ['users']
+//             }
+//           },
+//         ],
+//         meta: {
+//           title: '订单管理',
+//           authRequired: ['users', 'admin'],
+//         }
+//       },
+//       {
+//         path: '/demos',
+//         whiteRoute: false,
+//         children: [
+//           {
+//             path: '/demos/demo',
+//             component: Demo,
+//             whiteRoute: false,
+//             meta: {
+//               title: 'DEMO',
+//               authRequired: ['users', 'admin']
+//             }
+//           },
+//           {
+//             path: '/demos/icon',
+//             component: Icons,
+//             whiteRoute: false,
+//             meta: {
+//               title: 'DEMO',
+//               authRequired: ['users', 'admin']
+//             }
+//           },
+//           {
+//             path: '/demos/useref',
+//             component: UseRef,
+//             whiteRoute: false,
+//             meta: {
+//               title: 'useRef',
+//               authRequired: ['users', 'admin']
+//             }
+//           },
+//           {
+//             path: '/demos/imperativeHandle',
+//             component: UseImperativeHandle,
+//             whiteRoute: false,
+//             meta: {
+//               title: 'UseImperativeHandle',
+//               authRequired: ['users', 'admin']
+//             }
+//           },
+//         ],
+//         meta: {
+//           title: 'Demo管理',
+//           authRequired: ['users', 'admin'],
+//         }
+//       },
+//       {
+//         path: '/antds',
+//         whiteRoute: false,
+//         children: [
+//           {
+//             path: '/antd/cascader',
+//             component: CascaderDemo,
+//             whiteRoute: false,
+//             meta: {
+//               title: '级联选择器',
+//               authRequired: ['users', 'admin']
+//             }
+//           },
+//         ],
+//         meta: {
+//           title: 'Antd',
+//           authRequired: ['users', 'admin'],
+//         }
+//       },
+//       {
+//         path: '/*',
+//         component: ErrorPage,
+//         whiteRoute: false,
+//         meta: {
+//           title: '404',
+//           authRequired: ['users', 'admin']
+//         }
+//       }
+//     ],
+//     meta: {
+//       title: '系统',
+//       authRequired: ['users', 'admin']
+//     }
+//   }
+// ]

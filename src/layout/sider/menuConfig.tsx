@@ -65,14 +65,6 @@ export const items: MenuItemWithAuth = [
                         key: '/orders/fruit/apple',
                         label: '苹果订单',
                         authRequired: ['users'],
-                        // children: [
-                        //     {
-                        //         key: '/orders/fruit/apple/detail',
-                        //         label: '订单详情',
-                        //         authRequired: ['users'],
-                        //         undisplay: true // 不能显示在面包屑中
-                        //     },
-                        // ]
                     },
                 ]
             }

@@ -4,6 +4,7 @@ import PrivateRoute from '@components/privateRoute'
 
 function AppRouter(props: { routes: Routes[] }) {
   const { routes } = props
+  // console.log(routes, 'routes');
   return (
     <Suspense fallback={<h1>loading...</h1>}>
       <Switch>
@@ -18,7 +19,6 @@ function AppRouter(props: { routes: Routes[] }) {
               routes={route.children}
               authRequired={route?.meta?.authRequired as string[]}
             />
-            // <PrivateRoute key={index} {...route} />
           )
         })}
       </Switch>

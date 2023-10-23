@@ -1,6 +1,6 @@
 import React, { FC, LazyExoticComponent } from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import {} from 'antd'
+import { } from 'antd'
 interface IPrivateRouteProps {
   component: LazyExoticComponent<FC>
   path: string
@@ -24,6 +24,8 @@ const PrivateRoute: FC<IPrivateRouteProps> = ({
   // 白名单路由不需要权限 authRequired 属性为 []
   const hasAuthRequired =
     authRequired?.includes(userType as string) || !authRequired
+
+  // console.log(hasAuthRequired, 'hasAuthRequired');
 
   if (!isLoggedIn && !whiteRoute) {
     // 未登录且不为白名单路由
