@@ -100,6 +100,9 @@ export const routes: Routes[] = [
             meta: {
               title: '苹果订单详情',
               authRequired: ['users'],
+              parent: '水果管理',
+              parentKey: '/orders/fruit',
+              hidden: true
             }
           },
           {

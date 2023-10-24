@@ -14,6 +14,7 @@ interface Routes {
     authRequired?: Array<string>
     parent?: string
     parentKey?: string
+    hidden?: boolean
   }
 }
 

@@ -15,7 +15,7 @@ const Layouts: FC<IProps> = ({ routes }): React.JSX.Element => {
         <>
             <Layout style={{ height: '100vh' }}>
                 <Sider>
-                    <Logo></Logo>
+                    {/* <Logo></Logo> */}
                     <SiderView></SiderView>
                 </Sider>
                 <Layout>
@@ -26,7 +26,7 @@ const Layouts: FC<IProps> = ({ routes }): React.JSX.Element => {
                         <MainView routes={routes}></MainView>
                     </Content>
                     <Footer>
-                        <FooterView></FooterView>
+                        {/* <FooterView></FooterView> */}
                     </Footer>
                 </Layout>
             </Layout>
