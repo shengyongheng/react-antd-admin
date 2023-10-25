@@ -3,7 +3,7 @@ const { merge } = require('webpack-merge'); //1.加载工具
 const devConfig = require('./webpack.dev.js'); //2.获取通用配置
 const prodConfig = require('./webpack.prod.js'); //2.获取通用配置
 const HtmlWebpackPlugin = require('html-webpack-plugin'); //打包html的插件
-// const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const env = process.env.NODE_ENV
 
@@ -13,7 +13,8 @@ const commonConfig = {
     entry: './src/index.js',
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, './dist')
+        path: path.resolve(__dirname, './dist'),
+        // clean: true, // 自动清除上次打包结果
     },
     // 配置默认后缀
     resolve: {
@@ -21,6 +22,36 @@ const commonConfig = {
     },
     module: {
         rules: [
+            {
+                test: /\.js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            [
+                                '@babel/preset-env',
+                                {
+                                    // 按需加载
+                                    useBuiltIns: 'usage',
+                                    // 指定core-js版本
+                                    corejs: {
+                                        version: 3
+                                    },
+                                    // 指定兼容性做到哪个版本浏览器
+                                    targets: {
+                                        chrome: '60',
+                                        firefox: '60',
+                                        ie: '9',
+                                        safari: '10',
+                                        edge: '17'
+                                    }
+                                }
+                            ]
+                        ]
+                    }
+                }
+            },
             {
                 test: /.css$/,
                 use: [
@@ -88,10 +119,15 @@ const commonConfig = {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: 'src/index.html',
-            title: "看到这里就成功了"
+            title: "看到这里就成功了",
+            minify: { // 压缩HTML文件
+                removeComments: true, // 移除HTML中的注释
+                collapseWhitespace: true, // 删除空白符与换行符
+                minifyCSS: true// 压缩内联css
+            },
         }),
         // 调用清除打包目录插件
-        // new CleanWebpackPlugin()
+        new CleanWebpackPlugin()
     ],
     mode: env
 }
@@ -163,7 +199,7 @@ module.exports = merge(env === 'development' ? devConfig : prodConfig, commonCon
 //                 title: "看到这里就成功了"
 //             }),
 //             // 调用清除打包目录插件
-//             // new CleanWebpackPlugin()
+//             new CleanWebpackPlugin()
 //         ],
 //         mode: env
 //     }
