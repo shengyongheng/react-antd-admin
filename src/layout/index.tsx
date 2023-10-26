@@ -4,6 +4,7 @@ import HeaderView from './header';
 import SiderView from './sider';
 import FooterView from './footer';
 import MainView from './main';
+import Tags from './tags';
 import Logo from './logo';
 const { Header, Content, Footer, Sider } = Layout;
 interface IProps {
@@ -23,6 +24,7 @@ const Layouts: FC<IProps> = ({ routes }): React.JSX.Element => {
                         <HeaderView></HeaderView>
                     </Header>
                     <Content>
+                        <Tags></Tags>
                         <MainView routes={routes}></MainView>
                     </Content>
                     <Footer>

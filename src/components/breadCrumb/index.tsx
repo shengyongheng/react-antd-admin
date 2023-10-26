@@ -35,10 +35,11 @@ const BreadCrumb: FC = (props: IProps): ReactElement => {
     }, [])
     return (
         <div className={styles['breadcrumb-container']}>
-            <Breadcrumb>
+            <Breadcrumb separator=">">
                 {pathSnippets.map((_: any, index: number) => {
                     const url = `/${pathSnippets.slice(0, index + 1).join('/')}`
                     const breadcrumb = breadcrumbs.find(item => item.key === url)
+                    document.title = breadcrumb?.label; // 设置浏览器标签名称
                     return <Breadcrumb.Item key={url}
                         // 下拉菜单配置
                         {...(breadcrumb?.children && {
