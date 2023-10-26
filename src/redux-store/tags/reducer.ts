@@ -38,8 +38,8 @@ const tagsReducer = (initState: ITagsInit = initStates, action: { type: string; 
         case ADD_TAGS:
             if (tagsList.every(item => item.path !== payload.path)) {
                 tagsList.push(payload)
-                activeTag = payload.path
             }
+            activeTag = payload.path
             setStorage('tags-list', { tagsList, activeTag })
             return { tagsList, activeTag };
         case SWITCH_TAGS:
