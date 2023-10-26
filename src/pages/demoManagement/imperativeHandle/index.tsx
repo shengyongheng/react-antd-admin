@@ -1,10 +1,12 @@
 import React, { FC, useState, useEffect, forwardRef, useImperativeHandle, useRef } from 'react';
+import { useAddTags } from "@hooks/useAddTags"
 import { Button, Input } from 'antd'
 interface IProps {
 
 }
 const UseImperativeHandle: FC = (props: IProps): React.JSX.Element => {
     const parentRef = useRef();
+    useAddTags()
     const onGetChildInputVal = () => {
         console.log((parentRef.current as any).input.value);
     }

@@ -24,10 +24,10 @@ const tagsReducer = (initState: ITagsInit = initStates, action: { type: string; 
         case DEL_TAGS:
             tagsList.forEach((item: any, index: number) => {
                 if (item.path === payload.path) {
-                    console.log(index, tagsList);
                     if (activeTag === payload.path) {
                         tagsList.splice(index, 1)
                         activeTag = tagsList[index - 1].path
+                        payload.history.push(activeTag)
                     } else {
                         tagsList.splice(index, 1)
                     }

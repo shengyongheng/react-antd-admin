@@ -1,4 +1,5 @@
 import React, { FC, ReactElement, useState, useEffect } from 'react';
+import { useAddTags } from "@hooks/useAddTags"
 import { Cascader } from 'antd'
 const { SHOW_CHILD } = Cascader;
 interface IProps {
@@ -10,7 +11,7 @@ interface Option {
     children?: Option[];
 }
 const CascaderDemo: FC = (props: IProps): ReactElement => {
-
+    useAddTags();
     const options: Option[] = [
         {
             label: 'Light',

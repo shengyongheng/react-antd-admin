@@ -5,7 +5,7 @@ export const addTags = (data: { path: string, label: string }) => ({
     payload: data
 })
 
-export const delTags = (data: { path: string }) => ({
+export const delTags = (data: { path: string, history: any }) => ({
     type: DEL_TAGS,
     payload: data
 })

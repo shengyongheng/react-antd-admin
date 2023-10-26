@@ -3,12 +3,15 @@ import { useHistory, useLocation } from "react-router-dom"
 // import { observer } from "mobx-react-lite"
 import { observer, inject } from "mobx-react"
 import { Button } from 'antd'
+import { useAddTags } from "@hooks/useAddTags"
+
 interface IProps {
     iconsStore?: any
 }
 const Demo: FC<IProps> = (props): React.JSX.Element => {
     const history = useHistory();
     const location = useLocation();
+    useAddTags();
     const goToIcons = () => {
         history.push('/demos/icon/3');
     }

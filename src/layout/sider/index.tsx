@@ -15,6 +15,7 @@ interface IProps {
 const rootSubmenuKeys = ['/users', '/orders', '/demos', '/antd'];
 const Sider: FC<IProps> = (props): React.JSX.Element => {
     const history = useHistory();
+
     const [openKeys, selectedKeys, setOpenKeys] = useOpenSelectKeys(history);
     const [menuItems, setMenuItems] = useState<MenuItemWithAuth>();
     useEffect(() => {
@@ -80,6 +81,7 @@ const Sider: FC<IProps> = (props): React.JSX.Element => {
             (setOpenKeys as setStateProp<string[]>)(latestOpenKey ? [latestOpenKey] : []);
         }
     };
+
     const onSwitchMenu = (menuItem: { key: string }) => {
         let { key } = menuItem
         history.push(key);

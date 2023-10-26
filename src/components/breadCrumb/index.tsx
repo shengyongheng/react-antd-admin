@@ -2,13 +2,17 @@ import React, { FC, ReactElement, useState, useEffect } from 'react'
 import { Breadcrumb } from 'antd'
 import { cloneDeep } from 'lodash'
 import { useHistory, useLocation } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux';
 import styles from './index.module.scss'
+import { addTags, switchTags } from 'src/redux-store/tags/action';
 import { flattenNestBreadcrumbs, getNestBreadcrumbs } from '../../utils/breadcrumb'
 import { routes } from 'src/router/routeLists'
 
 interface IProps { }
 
 const BreadCrumb: FC = (props: IProps): ReactElement => {
+    const tags = useSelector(((state: any) => state.tags))
+    const dispatch = useDispatch();
     const history = useHistory()
     const location = useLocation()
     const { pathname } = location
@@ -17,6 +21,11 @@ const BreadCrumb: FC = (props: IProps): ReactElement => {
         console.log(item.key, 'key-breadCrumbClick')
         if (!item.children && pathname !== item.key) {
             history.push(item.key)
+            if (tags.tagsList.some((tagItem: any) => tagItem.path === item.key)) {
+                dispatch(switchTags({ path: item.key }))
+            } else {
+                dispatch(addTags({ path: pathname, label: item.label }))
+            }
         }
     }
 
@@ -30,6 +39,7 @@ const BreadCrumb: FC = (props: IProps): ReactElement => {
         flattenBreadcrumbs = flattenNestBreadcrumbs(getNestBreadcrumbs(cloneDeep(routes[1].children || []), breadcrumbs))
         setBreadcrumbs(flattenBreadcrumbs)
     }, [])
+
     return (
         <div className={styles['breadcrumb-container']}>
             <Breadcrumb separator=">">

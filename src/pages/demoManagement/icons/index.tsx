@@ -2,6 +2,7 @@ import React, { FC, useState, useEffect } from 'react';
 import { useHistory, useParams } from "react-router-dom"
 import { observer } from "mobx-react-lite"
 import { useStore } from "../../../mobx-store"
+import { useAddTags } from "@hooks/useAddTags"
 import { Button } from 'antd'
 import {
     UserOutlined,
@@ -13,6 +14,7 @@ interface IProps {
 const Icons: FC<IProps> = (props): React.JSX.Element => {
     const history = useHistory();
     const params = useParams();
+    useAddTags()
     const { demoStore: { name, changeNameOfDemo } } = useStore();
     useEffect(() => {
         console.log(params);

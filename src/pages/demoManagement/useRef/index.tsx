@@ -1,10 +1,13 @@
 import React, { FC, useState, useEffect, useRef } from 'react';
 import { Button } from 'antd'
+import { useAddTags } from "@hooks/useAddTags"
+
 interface IProps {
 
 }
 const UseRef: FC = (props: IProps): React.JSX.Element => {
     const [count, setCount] = useState(1)
+    useAddTags()
     const countRef = useRef(count);
     const nameRef = useRef('李四');
     let sex = '男';
