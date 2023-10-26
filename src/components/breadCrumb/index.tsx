@@ -27,10 +27,7 @@ const BreadCrumb: FC = (props: IProps): ReactElement => {
     useEffect(() => {
         let flattenBreadcrumbs: any = [] // 拍平面包屑列表
         const breadcrumbs: any = [] // 面包屑列表
-        //#region 
         flattenBreadcrumbs = flattenNestBreadcrumbs(getNestBreadcrumbs(cloneDeep(routes[1].children || []), breadcrumbs))
-        // console.log(flattenBreadcrumbs, 'flattenBreadcrumbsflattenBreadcrumbsflattenBreadcrumbs');
-        //#endregion
         setBreadcrumbs(flattenBreadcrumbs)
     }, [])
     return (
