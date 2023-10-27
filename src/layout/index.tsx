@@ -28,7 +28,7 @@ const Layouts: FC<IProps> = ({ routes }): React.JSX.Element => {
                         <MainView routes={routes}></MainView>
                     </Content>
                     <Footer>
-                        {/* <FooterView></FooterView> */}
+                        <FooterView></FooterView>
                     </Footer>
                 </Layout>
             </Layout>

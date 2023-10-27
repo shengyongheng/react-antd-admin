@@ -1,4 +1,8 @@
 .tags {
+    height: 36px;
+    display: flex;
+    align-items: center;
+
     :global {
         .ant-tag {
             cursor: pointer;
