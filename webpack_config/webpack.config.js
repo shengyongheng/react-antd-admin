@@ -52,6 +52,23 @@ const commonConfig = {
                     }
                 }
             },
+            // enforce 属性
+            {
+                test: /\.js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: path.resolve(__dirname, './custom-loaders/my-enforce-post.js'),
+                },
+                enforce: 'post'
+            },
+            {
+                test: /\.js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: path.resolve(__dirname, './custom-loaders/my-enforce-pre.js'),
+                },
+                enforce: 'pre'
+            },
             {
                 test: /.css$/,
                 use: [

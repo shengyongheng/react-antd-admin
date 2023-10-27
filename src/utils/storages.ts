@@ -1,4 +1,11 @@
 /**
+ * @desc 获取token
+ */
+export const getToken = (): string | null => {
+    return window.localStorage.getItem('token');
+}
+
+/**
  * localStorage 设置
  * @param {String} key 键
  * @param {String} val 值
