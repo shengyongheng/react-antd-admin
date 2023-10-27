@@ -41,6 +41,16 @@
                 img.src = reader.result
             })
         })
+
+        fetch('http://127.0.0.1:5501/test', {
+            method: 'POST', // 指定请求方法
+        })
+            .then(response => {
+                console.log(response);
+                return response.json()
+            }) // 将响应解析为JSON
+            .then(data => console.log(data)) // 处理获取到的数据
+            .catch(error => console.error('Error:', error)); // 捕获并处理错误
     </script>
 </body>
 

@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /webpack_config/node_modules
+/node_express/node_modules
 /.pnp
 .pnp.js
 
