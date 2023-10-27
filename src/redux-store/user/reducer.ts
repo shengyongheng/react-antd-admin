@@ -9,11 +9,11 @@ const initStates: IUserInit = {
     userType: ''
 }
 
-const userReducer = (initState: { token: string } = initStates, action: { type: string; payload: any }) => {
+const userReducer = (initState: { token: string, userType: string } = initStates, action: { type: string; payload: any }) => {
     const { payload } = action
     switch (action.type) {
         case SET_TOKEN:
-            initState.token = payload
+            initState = payload
             return { ...initState };
         default:
             return initState

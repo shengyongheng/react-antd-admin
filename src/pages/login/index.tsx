@@ -108,7 +108,7 @@ const Login: FC = (props: IProps): React.JSX.Element => {
   const handleSubmit = () => {
     localStorage.setItem('userType', 'users')
     localStorage.setItem('token', 'test');
-    dispatch(setToken('test'));
+    dispatch(setToken({ userType: 'users', token: 'test' }));
     history.push({
       pathname: '/home'
     })

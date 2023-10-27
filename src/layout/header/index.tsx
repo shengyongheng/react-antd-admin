@@ -2,19 +2,20 @@ import React, { FC, useState, useEffect } from 'react'
 import styles from './index.module.scss'
 import { useHistory } from 'react-router-dom'
 import BreadCrumb from '@components/breadCrumb'
-import { getStorage } from '@utils/storages'
+import { useSelector } from 'react-redux/es/hooks/useSelector'
 import { Dropdown } from 'antd'
 import type { MenuProps } from 'antd';
 interface IProps { }
 const Header: FC<IProps> = (props): React.JSX.Element => {
   const history = useHistory()
+
+  const userType = useSelector((state: any) => state.user.userType)
+
   const loginout = () => {
     localStorage.clear()
     history.go(0)
     history.replace('/login')
   }
-
-  console.log(getStorage('userType'));
 
   const items: MenuProps['items'] = [
     {
@@ -42,7 +43,7 @@ const Header: FC<IProps> = (props): React.JSX.Element => {
       <div className='user-info'>
         用户名：
         <Dropdown menu={{ items }} placement="bottom">
-          <span className='username'>admin</span>
+          <span className='username'>{userType}</span>
         </Dropdown>
       </div>
     </div>

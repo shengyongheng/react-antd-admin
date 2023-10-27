@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="file" id="imgInput">
+    <img id="img" src="" alt="">
+    <script>
+        /**
+         * @desc 文件上传与预览图片
+         */
+
+        // URL.createObjectURL
+
+        // imgInput.addEventListener('change', function () {
+        //     console.log(this.files[0], 'this.files');
+        //     URL.createObjectURL(this.files[0])
+        //     img.src = URL.createObjectURL(this.files[0])
+        // })
+        // img.onload = () => {
+        //     URL.revokeObjectURL(img.src);
+        // };
+
+        // FileReader 的 readAsDataURL()
+        const reader = new FileReader();
+        console.log("EMPTY", reader.readyState); // readyState will be 0
+
+        imgInput.addEventListener('change', (e) => {
+            const files = e.target.files
+            const file = files[0]
+            reader.readAsDataURL(file)
+            console.log("LOADING", reader.readyState); // readyState will be 1
+            reader.addEventListener('load', function () {
+                console.log("LOADED", reader.readyState); // readyState will be 2
+                console.log(reader.result, 'reader.result');
+                img.src = reader.result
+            })
+        })
+    </script>
+</body>
+
+</html>

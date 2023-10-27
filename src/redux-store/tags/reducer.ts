@@ -1,4 +1,4 @@
-import { ADD_TAGS, DEL_TAGS, SWITCH_TAGS } from './constant'
+import { ADD_TAGS, DEL_TAGS, SWITCH_TAGS, CLEAR_OTHER_TAGS, CLEAR_ALL_TAGS } from './constant'
 import { setStorage, getStorage } from '@utils/storages'
 
 export interface ITagsInit {
@@ -46,6 +46,23 @@ const tagsReducer = (initState: ITagsInit = initStates, action: { type: string; 
             activeTag = payload.path
             setStorage('tags-list', { tagsList, activeTag })
             return { tagsList, activeTag };
+        case CLEAR_OTHER_TAGS:
+            const filterTagsList = tagsList.filter((item, index: number) => index === 0 || activeTag === item.path)
+            setStorage('tags-list', { tagsList: filterTagsList, activeTag })
+            return { tagsList, activeTag };
+        case CLEAR_ALL_TAGS:
+            initState = {
+                tagsList: [
+                    {
+                        path: '/home',
+                        label: '首页',
+                        params: {}
+                    }
+                ],
+                activeTag: "/home"
+            }
+            setStorage('tags-list', initState)
+            return initState;
         default:
             return initState
     }
