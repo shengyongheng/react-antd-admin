@@ -1,9 +1,13 @@
 const express = require('express')
 const cors = require("cors");
-const testRouter = require('./router/test')
-const bookRouter = require('./router/book')
+const indexRouter = require('./routers/index')
+const testRouter = require('./routers/test')
+const bookRouter = require('./routers/book')
 
 const app = express();
+
+// 静态资源处理
+app.use(express.static('public'))
 
 app.use(cors())
 
@@ -20,6 +24,7 @@ app.use(cors())
 // })
 
 // 注册路由模块
+app.use(indexRouter);
 app.use(testRouter);
 app.use(bookRouter);
 
