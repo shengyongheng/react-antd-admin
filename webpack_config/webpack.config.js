@@ -9,6 +9,25 @@ const env = process.env.NODE_ENV
 
 // console.log('环境变量：', env,)
 
+// 获取处理样式的Loaders
+const getStyleLoaders = (preProcessor) => {
+    return [
+        "style-loader",
+        "css-loader",
+        {
+            loader: "postcss-loader",
+            options: {
+                postcssOptions: {
+                    plugins: [
+                        "postcss-preset-env", // 能解决大多数样式兼容性问题
+                    ],
+                },
+            },
+        },
+        preProcessor,
+    ].filter(Boolean);
+};
+
 const commonConfig = {
     entry: './src/index.js',
     output: {
@@ -69,20 +88,32 @@ const commonConfig = {
                 },
                 enforce: 'pre'
             },
+            /**
+       * 样式资源处理
+       */
             {
-                test: /.css$/,
-                use: [
-                    'style-loader',
-                    // 自定义 Loader
-                    // {
-                    //     loader: path.resolve(__dirname, './custom-loaders/my-style-loader.js'),
-                    //     options: {
-                    //         loaderName: 'custom-loader'
-                    //     }
-                    // },
-                    // path.resolve(__dirname, './custom-loaders/my-style-loader.js'),
-                    'css-loader'
-                ]
+                test: /\.css$/,
+                // 自定义 Loader
+                // {
+                //     loader: path.resolve(__dirname, './custom-loaders/my-style-loader.js'),
+                //     options: {
+                //         loaderName: 'custom-loader'
+                //     }
+                // },
+                // path.resolve(__dirname, './custom-loaders/my-style-loader.js'),
+                use: getStyleLoaders()
+            },
+            {
+                test: /\.less$/,
+                use: getStyleLoaders("less-loader"),
+            },
+            {
+                test: /\.s[ac]ss$/,
+                use: getStyleLoaders("sass-loader"),
+            },
+            {
+                test: /\.styl$/,
+                use: getStyleLoaders("stylus-loader"),
             },
             {
                 test: /\.(png|jpg|jpeg|gif|svg)$/,
