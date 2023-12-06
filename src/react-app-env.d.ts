@@ -29,3 +29,12 @@ interface IMenuItem {
 type MenuItemWithAuth<T = Required<MenuProps>['items'][number], K = { authRequired: IUserType }> = Array<T & K & { children?: Array<T & K & { children?: Array<T & K> }> }>
 
 type setStateProp<T> = Dispatch<SetStateAction<T>>
+
+interface ITheme {
+  primaryColor?: string;
+  infoColor?: string;
+  successColor?: string;
+  processingColor?: string;
+  errorColor?: string;
+  warningColor?: string;
+}
