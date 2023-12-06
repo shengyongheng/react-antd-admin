@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { message } from 'antd'
+import { BrowserRouter } from 'react-router-dom'
 import baseURL from '../config'
-import { getToken } from './storages'
+import { getToken, removeStorage } from './storages'
 import type {
     AxiosInstance,
     AxiosRequestConfig, // 旧版本配置
@@ -10,6 +11,9 @@ import type {
 } from 'axios'
 // 环境变量取值
 let env = process.env.NODE_ENV as 'development' | 'production';
+
+const router = new BrowserRouter()
+
 // 假设我们某个项目后端接口不管请求成功与失败，返回的结构永远是code、message、results的话我们可以定义一个这样的数据类型。
 interface Result<T> { // T 代表后端返回数据的格式
     code: number;
@@ -59,6 +63,10 @@ export class Request {
                         break;
                     case 403:
                         errMessage = "拒绝访问(403)";
+                        removeStorage('token');
+                        //当token超时or失效 403账号无权限的时候直接跳转到/login页重新登录
+                        router.history.push('/login');
+                        // window.location.href = '/login';
                         break;
                     case 404:
                         errMessage = "请求出错(404)";
