@@ -1,5 +1,6 @@
 import React, { FC, ReactElement, useState, useEffect } from 'react';
 import { useAddTags } from "@hooks/useAddTags"
+import styles from "./index.module.scss"
 import { } from 'antd'
 interface IProps {
 
@@ -7,9 +8,9 @@ interface IProps {
 const AppleOrder = (props: IProps): ReactElement => {
     useAddTags();
     return (
-        <>
+        <div className={styles['apple-order-page']}>
             苹果订单
-        </>
+        </div>
     )
 }
 
