@@ -87,6 +87,11 @@ export const items: MenuItemWithAuth = [
                 authRequired: ['users', 'admin'],
             },
             {
+                key: '/demos/mitt',
+                label: 'Mitt',
+                authRequired: ['users', 'admin'],
+            },
+            {
                 key: '/demos/useref',
                 label: 'UseRef',
                 authRequired: ['users', 'admin'],

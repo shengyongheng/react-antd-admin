@@ -9,6 +9,9 @@
     // 路径提示
     "baseUrl": ".",
     "paths": {
+      "@/*": [
+        "src/*"
+      ],
       "@components/*": [
         "src/components/*"
       ],

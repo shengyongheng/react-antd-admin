@@ -7,6 +7,7 @@ const Admin = lazy(() => import('../pages/usersManagement/admin'))
 const Vip = lazy(() => import('../pages/usersManagement/vip'))
 const Demo = lazy(() => import('../pages/demoManagement/demo'))
 const Icons = lazy(() => import('../pages/demoManagement/icons'))
+const Mitt = lazy(() => import('../pages/demoManagement/mitt'))
 const UseRef = lazy(() => import('../pages/demoManagement/useRef'))
 const UseImperativeHandle = lazy(
   () => import('../pages/demoManagement/imperativeHandle')
@@ -150,6 +151,17 @@ export const routes: Routes[] = [
         whiteRoute: false,
         meta: {
           title: 'ICON',
+          authRequired: ['users', 'admin'],
+          parent: 'DEMOS',
+          parentKey: '/demos'
+        }
+      },
+      {
+        path: '/demos/mitt',
+        component: Mitt,
+        whiteRoute: false,
+        meta: {
+          title: 'MITT',
           authRequired: ['users', 'admin'],
           parent: 'DEMOS',
           parentKey: '/demos'

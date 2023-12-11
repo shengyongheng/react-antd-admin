@@ -5,10 +5,11 @@ const cracoSassResourcesLoader = require('craco-sass-resources-loader')
 module.exports = {
   webpack: {
     alias: {
+      '@': resolve('src'),
       '@components': resolve('src/components'),
       '@hooks': resolve('src/hooks'),
       '@utils': resolve('src/utils'),
-      '@styles': resolve('src/styles')
+      '@styles': resolve('src/styles'),
     }
   },
   plugins: [
