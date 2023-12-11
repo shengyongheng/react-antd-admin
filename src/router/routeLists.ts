@@ -45,6 +45,7 @@ export const routes: Routes[] = [
     component: Layouts,
     whiteRoute: false,
     children: [
+      // 首页
       {
         path: '/home',
         component: Home,
@@ -54,6 +55,7 @@ export const routes: Routes[] = [
           authRequired: ['users', 'admin']
         }
       },
+      // 用户管理
       {
         path: '/users/admin',
         component: Admin,
@@ -76,6 +78,7 @@ export const routes: Routes[] = [
           parentKey: '/users'
         }
       },
+      // 订单管理
       {
         path: '/orders/wines',
         component: Wines,
@@ -134,6 +137,7 @@ export const routes: Routes[] = [
           parentKey: '/orders'
         }
       },
+      // demo管理
       {
         path: '/demos/demo',
         component: Demo,
@@ -189,6 +193,7 @@ export const routes: Routes[] = [
           parentKey: '/demos'
         }
       },
+      // antd组件
       {
         path: '/antd/cascader',
         component: CascaderDemo,
@@ -200,6 +205,7 @@ export const routes: Routes[] = [
           parentKey: '/antd'
         }
       },
+      // 404页面
       {
         path: '/*',
         component: ErrorPage,
