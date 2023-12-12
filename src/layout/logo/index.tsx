@@ -4,8 +4,6 @@ interface IProps {
 
 }
 const Logo: FC = (props: IProps): React.JSX.Element => {
-    const [xxx, setXxx] = useState('')
-
 
     return (
         <>

@@ -1,3 +1,19 @@
 .test {
     color: $color
 }
+.collapse-extend-div {
+    width: 93vw;
+    padding: 8px;
+    overflow: hidden;
+    color: #333;
+    line-height: 25px;
+    background: #999;
+    border-radius: 8px;
+  }
+  
+  .extend-collapse-btn {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+  }
