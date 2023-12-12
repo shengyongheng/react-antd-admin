@@ -8,9 +8,7 @@ import { addTags, switchTags } from 'src/redux-store/tags/action';
 import { flattenNestBreadcrumbs, getNestBreadcrumbs } from '../../utils/breadcrumb'
 import { routes } from 'src/router/routeLists'
 
-interface IProps { }
-
-const BreadCrumb: FC = (props: IProps): ReactElement => {
+const BreadCrumb: FC = (): ReactElement => {
     const tags = useSelector(((state: any) => state.tags))
     const dispatch = useDispatch();
     const history = useHistory()

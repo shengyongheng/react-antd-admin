@@ -10,6 +10,7 @@ module.exports = {
       '@hooks': resolve('src/hooks'),
       '@utils': resolve('src/utils'),
       '@styles': resolve('src/styles'),
+      '@store': resolve('src/redux-store'),
     }
   },
   plugins: [

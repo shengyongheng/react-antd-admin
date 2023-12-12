@@ -23,6 +23,9 @@
       ],
       "@styles/*": [
         "src/styles/*"
+      ],
+      "@store/*": [
+        "src/redux-store/*"
       ]
     },
     "allowJs": true,
