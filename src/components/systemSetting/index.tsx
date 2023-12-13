@@ -3,7 +3,7 @@ import { RocketTwoTone } from '@ant-design/icons';
 import { Button, Drawer } from 'antd';
 import type { ConfigProvider } from 'antd';
 import { THEMES } from "./constants/theme"
-import styles from "./index.module.scss"
+import styles from "./index.module.less"
 interface IProps {
     ConfigProvider: {
         config: typeof ConfigProvider['config']
@@ -42,6 +42,7 @@ const SystemSetting = (props: IProps): ReactElement => {
                 {
                     THEMES.map((item: ITheme) =>
                         <Button
+                            key={item.primaryColor}
                             type="primary"
                             style={{ color: item.primaryColor }}
                             onClick={() => {

@@ -1,7 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import type { MenuProps } from 'antd';
 import { useHistory } from "react-router-dom"
-import { useSelector } from 'react-redux'
 import * as Icons from '@ant-design/icons'
 import { useOpenSelectKeys } from '@hooks/useOpenSelectKeys'
 import { Menu } from 'antd';
@@ -16,7 +15,6 @@ interface IProps {
 const rootSubmenuKeys = ['/users', '/orders', '/demos', '/antd'];
 const Sider: FC<IProps> = (props): React.JSX.Element => {
     const history = useHistory();
-    const inlineCollapsed = useSelector((state: any) => state.app.inlineCollapsed)
     const [openKeys, selectedKeys, setOpenKeys] = useOpenSelectKeys(history);
     const [menuItems, setMenuItems] = useState<MenuItemWithAuth>();
     useEffect(() => {
@@ -96,7 +94,6 @@ const Sider: FC<IProps> = (props): React.JSX.Element => {
                 items={menuItems}
                 openKeys={openKeys as string[]}
                 selectedKeys={(selectedKeys as string[])}
-                inlineCollapsed={inlineCollapsed}
                 defaultSelectedKeys={[window.location.pathname]}
                 onOpenChange={onOpenChange}
                 onClick={onSwitchMenu}

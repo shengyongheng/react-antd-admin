@@ -3,7 +3,7 @@ import { Breadcrumb } from 'antd'
 import { cloneDeep } from 'lodash'
 import { useHistory, useLocation } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux';
-import styles from './index.module.scss'
+import styles from './index.module.less'
 import { addTags, switchTags } from 'src/redux-store/tags/action';
 import { flattenNestBreadcrumbs, getNestBreadcrumbs } from '../../utils/breadcrumb'
 import { routes } from 'src/router/routeLists'
