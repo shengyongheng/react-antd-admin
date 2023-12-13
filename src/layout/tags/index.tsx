@@ -1,7 +1,7 @@
 import React, { ReactElement, useState, useEffect } from 'react';
 import { Tag, Button, Dropdown } from 'antd'
 import type { MenuProps } from 'antd';
-import styles from "./index.module.scss"
+import styles from "./index.module.less"
 import { useHistory } from "react-router-dom"
 import { switchTags, delTags, clearOtherTags, clearALLTags } from 'src/redux-store/tags/action';
 import { useSelector, useDispatch } from 'react-redux';

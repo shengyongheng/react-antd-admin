@@ -1,5 +1,6 @@
 import React, { FC, useState, useEffect } from 'react'
-import styles from './index.module.scss'
+// import styles from './index.module.scss'
+import styles from './index.module.less'
 import { useHistory } from 'react-router-dom'
 import {
   MenuFoldOutlined,
@@ -45,20 +46,22 @@ const Header: FC<IProps> = (props): React.JSX.Element => {
   ];
 
   return (
-    <div className={styles['header-container']}>
-      <div className='inline-collapsed' onClick={toggleCollapsed}>
-        {inlineCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+    <>
+      <div className={styles['header-container']}>
+        <div className='inline-collapsed' onClick={toggleCollapsed}>
+          {inlineCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+        </div>
+        <div className='breadcrumbs'>
+          <BreadCrumb />
+        </div>
+        <div className='user-info'>
+          用户名：
+          <Dropdown menu={{ items }} placement="bottom">
+            <span className='username'>{userType}</span>
+          </Dropdown>
+        </div>
       </div>
-      <div className='breadcrumbs'>
-        <BreadCrumb />
-      </div>
-      <div className='user-info'>
-        用户名：
-        <Dropdown menu={{ items }} placement="bottom">
-          <span className='username'>{userType}</span>
-        </Dropdown>
-      </div>
-    </div>
+    </>
   )
 }
 

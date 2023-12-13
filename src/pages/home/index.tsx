@@ -2,7 +2,8 @@ import React, { FC, useState, useEffect } from 'react'
 import { useSelector } from 'react-redux/es/hooks/useSelector'
 import { useAddTags, useCollapseRows } from "@hooks/index"
 import { } from 'antd'
-import styles from './index.module.scss'
+// import styles from './index.module.scss'
+import styles from './index.module.less'
 interface IProps { }
 const HomePage: FC = (props: IProps): React.JSX.Element => {
   const token = useSelector((state: any) => state.user.token)
@@ -30,7 +31,7 @@ const HomePage: FC = (props: IProps): React.JSX.Element => {
   return (
     <>
       token:{token}
-      <div className={styles['test']}>Home</div>
+      <div className={styles['less-test']}>Home</div>
       {/* 文本按行收起/展开 */}
       <div style={{ position: 'relative' }}>
         <div id='collapse-extend-div' className={styles['collapse-extend-div']}>
