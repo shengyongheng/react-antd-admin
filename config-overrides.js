@@ -15,6 +15,8 @@ module.exports = override(
     addLessLoader({
         lessOptions: {
             javascriptEnabled: true,
+            // localIdentName: '[name]__[local]--[hash:base64:8]' // 生成的隔离类名格式 但是未生效
+            localIdentName: '[local]--[hash:base64:5]' // 默认格式
         }
     }),
     // 解决 PostCSS Loader has been initialized using an options object that does not match the API schema.

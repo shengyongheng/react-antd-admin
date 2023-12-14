@@ -12,6 +12,7 @@ const UseRef = lazy(() => import('../pages/demoManagement/useRef'))
 const UseImperativeHandle = lazy(
   () => import('../pages/demoManagement/imperativeHandle')
 )
+const ScreenLists = lazy(() => import('../pages/dataScreen/screenLists'))
 const Wines = lazy(() => import('../pages/ordersManagement/wines'))
 const Fruit = lazy(() => import('../pages/ordersManagement/fruit'))
 const WatermelonOrder = lazy(
@@ -135,6 +136,18 @@ export const routes: Routes[] = [
           authRequired: ['users'],
           parent: '订单管理',
           parentKey: '/orders'
+        }
+      },
+      // 数据大屏
+      {
+        path: '/screen/list',
+        component: ScreenLists,
+        whiteRoute: false,
+        meta: {
+          title: '数据大屏列表',
+          authRequired: ['admin', 'users'],
+          parent: '数据大屏',
+          parentKey: '/screen'
         }
       },
       // demo管理

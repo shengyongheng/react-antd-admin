@@ -12,9 +12,9 @@ export function flattenNestBreadcrumbs(nestBreadcrumbs: any) {
     return itemTypeBreadcrumbs
 }
 
-export function getNestBreadcrumbs(flatRoutes: any, breadcrumbs: any) {
+export function getNestBreadcrumbs(flatRoutes: Routes[], breadcrumbs: any) {
     breadcrumbs.push(...flatRoutes)
-    breadcrumbs.forEach((item: any) => {
+    breadcrumbs.forEach((item: Routes) => {
         const { meta: { parent, parentKey } } = item
         if (parent && parentKey) {
             // 不存在该面包屑
@@ -28,7 +28,7 @@ export function getNestBreadcrumbs(flatRoutes: any, breadcrumbs: any) {
                 }
                 breadcrumbs.push(newBreadcrumb)
             } else {
-                breadcrumbs.forEach((item2: any) => {
+                breadcrumbs.forEach((item2: Routes) => {
                     const { path } = item2
                     if (path === parentKey) {
                         item2?.children?.push(item)
@@ -37,6 +37,7 @@ export function getNestBreadcrumbs(flatRoutes: any, breadcrumbs: any) {
             }
         }
     })
+    console.log(breadcrumbs, 'typeof breadcrumbs');
     return breadcrumbs
 }
 

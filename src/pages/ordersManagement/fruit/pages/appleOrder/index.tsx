@@ -1,6 +1,5 @@
 import React, { FC, ReactElement, useState, useEffect } from 'react';
 import { useAddTags } from "@hooks/useAddTags"
-// import styles from "./index.module.scss"
 import styles from "./index.module.less"
 import { } from 'antd'
 interface IProps {

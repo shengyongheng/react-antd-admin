@@ -43,6 +43,19 @@ export const items: MenuItemWithAuth = [
         authRequired: ['users', 'admin'],
     },
     {
+        key: '/screen',
+        icon: 'AreaChartOutlined',
+        children: [
+            {
+                key: '/screen/list',
+                label: '数据大屏列表',
+                authRequired: ['admin', 'users'],
+            },
+        ],
+        label: '数据大屏',
+        authRequired: ['users', 'admin'],
+    },
+    {
         key: '/orders',
         icon: 'MailOutlined',
         children: [
