@@ -10,8 +10,6 @@ import { PersistGate } from 'redux-persist/lib/integration/react';
 import store, { persistor } from './redux-store'
 // import 'antd/dist/antd.min.css'
 import 'antd/dist/antd.variable.min.css'
-// 全局 scss 样式
-// import './styles/index.scss';
 // 全局 less 样式
 import './styles/index.less';
 import SystemSetting from '@components/systemSetting';

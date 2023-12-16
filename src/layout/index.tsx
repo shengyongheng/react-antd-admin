@@ -25,10 +25,10 @@ const Layouts: FC<IProps> = ({ routes }): React.JSX.Element => {
                     <Header>
                         <HeaderView></HeaderView>
                     </Header>
-                    {/* <Content>
+                    <Content>
                         <Tags></Tags>
                         <MainView routes={routes}></MainView>
-                    </Content> */}
+                    </Content>
                     <Footer>
                         <FooterView></FooterView>
                     </Footer>
