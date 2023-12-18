@@ -15,10 +15,10 @@ let env = process.env.NODE_ENV as 'development' | 'production';
 const router = new BrowserRouter()
 
 // 假设我们某个项目后端接口不管请求成功与失败，返回的结构永远是code、message、results的话我们可以定义一个这样的数据类型。
-interface Result<T> { // T 代表后端返回数据的格式
-    code: number;
+interface Response<T> { // T 代表后端返回数据的格式
+    states: number;
     message: string;
-    results: T;
+    data: T;
 }
 export class Request {
     // axios 实例
@@ -47,7 +47,7 @@ export class Request {
             (res: AxiosResponse) => {
                 // 直接返回res，当然你也可以只返回res.data
                 // 系统如果有自定义code也可以在这里处理
-                return res.data
+                return res
             },
             (err: any) => {
                 // 这里用来处理http常见错误，进行全局提示
@@ -106,18 +106,20 @@ export class Request {
     public request(config: AxiosRequestConfig): Promise<AxiosResponse> {
         return this.instance.request(config);
     };
-    public get<T = any>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<Result<T>>> {
+    public get<T = any>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<Response<T>>> {
         return this.instance.get(url, config);
     };
-    public post<T = any>(url: string, data: any, config?: AxiosRequestConfig): Promise<AxiosResponse<Result<T>>> {
+    public post<T = any>(url: string, data: any, config?: AxiosRequestConfig): Promise<AxiosResponse<Response<T>>> {
         return this.instance.post(url, data, config);
     };
-    public put<T = any>(url: string, data: any, config?: AxiosRequestConfig): Promise<AxiosResponse<Result<T>>> {
+    public put<T = any>(url: string, data: any, config?: AxiosRequestConfig): Promise<AxiosResponse<Response<T>>> {
         return this.instance.put(url, data, config);
     };
-    public delete<T = any>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<Result<T>>> {
+    public delete<T = any>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<Response<T>>> {
         return this.instance.delete(url, config);
     };
 }
 // 默认导出Request实例
-export default new Request({})
+const $http = new Request({});
+
+export { $http }

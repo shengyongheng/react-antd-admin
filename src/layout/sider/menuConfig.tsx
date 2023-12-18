@@ -126,6 +126,11 @@ export const items: MenuItemWithAuth = [
                 key: '/antd/cascader',
                 label: '级联选择器',
                 authRequired: ['users', 'admin'],
+            },
+            {
+                key: '/antd/table',
+                label: '表格组件',
+                authRequired: ['users', 'admin'],
             }
         ],
         label: 'Antd',

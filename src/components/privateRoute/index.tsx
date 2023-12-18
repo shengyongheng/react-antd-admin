@@ -26,24 +26,19 @@ const PrivateRoute: FC<IPrivateRouteProps> = ({
     authRequired?.includes(userType as string) || !authRequired
 
   // console.log(hasAuthRequired, 'hasAuthRequired');
-
+  
   if (!isLoggedIn && !whiteRoute) {
     // 未登录且不为白名单路由
     return <Redirect to='/login' />
   }
 
-  if (isLoggedIn && whiteRoute) {
-    // 已登录且为白名单路由
-    return <Redirect to='/home' />
-  }
   return (
     <>
       <Route
         path={path}
         exact={exact}
         render={(props: any) => {
-          // console.log('<PrivateRoute />', 'props', props)
-          return hasAuthRequired ? (
+          return hasAuthRequired || whiteRoute ? (
             <Component {...props} routes={routes} />
           ) : (
             <Redirect path='*' to='/*' />

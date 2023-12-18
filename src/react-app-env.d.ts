@@ -1,8 +1,17 @@
 /// <reference types="react-scripts" />
+
 declare module 'react-router-dom'
 declare module "*.less" {
   const content: { [className: string]: string };
   export default content;
+}
+declare module 'mockjs';
+
+// mock 接口
+interface IMockJsOption {
+  url: string;
+  type: string;
+  body: any
 }
 
 type IUserType = Array<'users' | 'admin'>

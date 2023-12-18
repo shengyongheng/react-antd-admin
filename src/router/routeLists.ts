@@ -23,6 +23,7 @@ const AppleOrder = lazy(
 )
 const AppleOrderDetail = lazy(() => import('../pages/ordersManagement/fruit/pages/appleOrder/components/appleOrderDetail/index'))
 const CascaderDemo = lazy(() => import('../pages/antdComp/cascader'))
+const TableDemo = lazy(() => import('../pages/antdComp/table'))
 const ErrorPage = lazy(() => import('../pages/errorPage'))
 export const routes: Routes[] = [
   {
@@ -206,13 +207,24 @@ export const routes: Routes[] = [
           parentKey: '/demos'
         }
       },
-      // antd组件
+      // antd组件 TableDemo
       {
         path: '/antd/cascader',
         component: CascaderDemo,
         whiteRoute: false,
         meta: {
           title: '级联选择器',
+          authRequired: ['users', 'admin'],
+          parent: 'Antd',
+          parentKey: '/antd'
+        }
+      },
+      {
+        path: '/antd/table',
+        component: TableDemo,
+        whiteRoute: false,
+        meta: {
+          title: '表格组件',
           authRequired: ['users', 'admin'],
           parent: 'Antd',
           parentKey: '/antd'
