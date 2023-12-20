@@ -8,6 +8,9 @@ export default Mock.mock('/tableData', 'get', (options: IMockJsOption) => {
                 'key|+1': 1,
                 'name': '@word',
                 'age': '@INT(1,100)',
+                'tags|1-2': [
+                    '@string("upper", 1, 7)', '@string("upper", 1, 7)'
+                ],
                 'address': `${Random.province()}-${Random.city()}-${Random.county()}`
             },
         ],

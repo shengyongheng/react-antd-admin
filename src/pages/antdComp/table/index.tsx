@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Space } from 'antd';
+import { Table, Space, Tag } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import type { TableRowSelection } from 'antd/es/table/interface';
 import { useAddTags } from "@hooks/useAddTags"
@@ -9,6 +9,7 @@ interface DataType {
     key: React.Key;
     name: string;
     age: number;
+    tags: string[];
     address: string;
 }
 
@@ -24,6 +25,23 @@ const columns: ColumnsType<DataType> = [
     {
         title: 'Address',
         dataIndex: 'address',
+    },
+    {
+        title: 'Tags',
+        key: 'tags',
+        dataIndex: 'tags',
+        render: (_, { tags }) => (
+            <>
+                {tags.map(tag => {
+                    let color = tag.length > 4 ? 'geekblue' : 'green';
+                    return (
+                        <Tag color={color} key={tag}>
+                            {tag}
+                        </Tag>
+                    );
+                })}
+            </>
+        ),
     },
     {
         title: 'Action',

@@ -13,12 +13,20 @@ interface IProps {
 }
 const Layouts: FC<IProps> = ({ routes }): React.JSX.Element => {
     const inlineCollapsed = useSelector((state: any) => state.app.inlineCollapsed)
-
+    const seizeStyle = {
+        width: '64px',
+        overflow: 'hidden',
+        flex: '0 0 80px',
+        maxWidth: '80px',
+        minWidth: '80px',
+        transition: 'all 0.2s ease 0s'
+    }
     return (
         <>
-            <Layout style={{ height: '100vh' }}>
+            <Layout>
+                <div style={seizeStyle} />
                 <Sider collapsed={inlineCollapsed} width={220}>
-                    {/* <Logo></Logo> */}
+                    <Logo></Logo>
                     <SiderView></SiderView>
                 </Sider>
                 <Layout>
@@ -33,7 +41,7 @@ const Layouts: FC<IProps> = ({ routes }): React.JSX.Element => {
                         <FooterView></FooterView>
                     </Footer>
                 </Layout>
-            </Layout>
+            </Layout >
         </>
     )
 }

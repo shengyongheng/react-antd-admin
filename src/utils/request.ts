@@ -50,6 +50,11 @@ export class Request {
                 return res
             },
             (err: any) => {
+                // 接口权限管理,token过期或者错误
+                if (err.data.code === 40099 || err.data.code === 40098) {
+                    message.error('token过期或者错误');
+                    router.history.push('/login')
+                }
                 // 这里用来处理http常见错误，进行全局提示
                 let errMessage = "";
                 let status = err.response?.status;
