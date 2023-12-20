@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Space, Tag } from 'antd';
+import { Table, Space, Tag, Button, Input } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import type { TableRowSelection } from 'antd/es/table/interface';
-import { useAddTags } from "@hooks/useAddTags"
+import { useAddTags, useTables } from "@hooks/index"
 import { getTableData } from "@/api/table"
 
 interface DataType {
@@ -13,6 +12,19 @@ interface DataType {
     address: string;
 }
 
+interface IPramas {
+    userId: string;
+    pageSize: number;
+    current: number;
+}
+
+interface ITableData {
+    items: DataType[];
+    total: number;
+    current: number;
+    pageSize: number;
+}
+
 const columns: ColumnsType<DataType> = [
     {
         title: 'Name',
@@ -21,6 +33,7 @@ const columns: ColumnsType<DataType> = [
     {
         title: 'Age',
         dataIndex: 'age',
+        sorter: true,
     },
     {
         title: 'Address',
@@ -56,62 +69,44 @@ const columns: ColumnsType<DataType> = [
 ];
 
 const TableDemo: React.FC = () => {
-    const [data, setData] = useState<DataType[]>();
-    const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
+    const [userId, setUserId] = useState('1');
     useAddTags();
-
-    useEffect(() => {
-        getTableData<{ items: DataType[] }>().then((res) => {
-            setData(res.items)
-        })
-    }, []);
-
-    const onSelectChange = (newSelectedRowKeys: React.Key[]) => {
-        console.log('selectedRowKeys changed: ', newSelectedRowKeys);
-        setSelectedRowKeys(newSelectedRowKeys);
-    };
-
-    const rowSelection: TableRowSelection<DataType> = {
-        selectedRowKeys,
-        onChange: onSelectChange,
-        selections: [
-            Table.SELECTION_ALL,
-            Table.SELECTION_INVERT,
-            Table.SELECTION_NONE,
+    // 获取表格数据
+    const { loading, tableData, rowSelection, selectedRowKeys, pagination, run } = useTables<ITableData, IPramas>(getTableData, {
+        // pollingInterval: 3000, // 轮询请求
+        manual: false, // 手动触发
+        defaultParams: [
             {
-                key: 'odd',
-                text: 'Select Odd Row',
-                onSelect: changableRowKeys => {
-                    let newSelectedRowKeys = [];
-                    newSelectedRowKeys = changableRowKeys.filter((_, index) => {
-                        if (index % 2 !== 0) {
-                            return false;
-                        }
-                        return true;
-                    });
-                    setSelectedRowKeys(newSelectedRowKeys);
-                },
-            },
-            {
-                key: 'even',
-                text: 'Select Even Row',
-                onSelect: changableRowKeys => {
-                    let newSelectedRowKeys = [];
-                    newSelectedRowKeys = changableRowKeys.filter((_, index) => {
-                        if (index % 2 !== 0) {
-                            return true;
-                        }
-                        return false;
-                    });
-                    setSelectedRowKeys(newSelectedRowKeys);
-                },
-            },
+                userId,
+                pageSize: 10,
+                current: 1
+            }
         ],
-    };
-
+    });
+    console.log(selectedRowKeys, 'selectedRowKeys');
     return <>
-        表格组件
-        <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
+        <Input
+            onChange={(e) => setUserId(e.target.value)}
+            value={userId}
+            placeholder="Please enter userId"
+            style={{ width: 140, marginRight: 16 }}
+        />
+        <Table
+            rowSelection={rowSelection}
+            columns={columns}
+            dataSource={tableData?.items}
+            loading={loading}
+            onChange={
+                (pagination, _, sorter) => { // 表格过滤需求不常见
+                    console.log(pagination, sorter, 'tableOnChange');
+                    run({
+                        userId,
+                        pageSize: pagination.pageSize as number,
+                        current: pagination.current as number
+                    })
+                }
+            }
+            pagination={pagination} />
     </>;
 };
 

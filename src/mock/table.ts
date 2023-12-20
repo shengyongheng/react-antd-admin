@@ -14,6 +14,9 @@ export default Mock.mock('/tableData', 'get', (options: IMockJsOption) => {
                 'address': `${Random.province()}-${Random.city()}-${Random.county()}`
             },
         ],
+        total: '@INT(1,100)',
+        current: 1,
+        pageSize: 10,
     })
     return {
         status: 200,
