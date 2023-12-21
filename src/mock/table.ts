@@ -11,7 +11,8 @@ export default Mock.mock('/tableData', 'get', (options: IMockJsOption) => {
                 'tags|1-2': [
                     '@string("upper", 1, 7)', '@string("upper", 1, 7)'
                 ],
-                'address': `${Random.province()}-${Random.city()}-${Random.county()}`
+                'address': `${Random.province()}-${Random.city()}-${Random.county()}`,
+                'description': '@cparagraph',
             },
         ],
         total: '@INT(1,100)',

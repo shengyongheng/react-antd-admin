@@ -14,11 +14,11 @@ interface IProps {
 const Layouts: FC<IProps> = ({ routes }): React.JSX.Element => {
     const inlineCollapsed = useSelector((state: any) => state.app.inlineCollapsed)
     const seizeStyle = {
-        width: '64px',
+        width: inlineCollapsed ? '64px' : '256px',
         overflow: 'hidden',
-        flex: '0 0 80px',
-        maxWidth: '80px',
-        minWidth: '80px',
+        flex: '0 0 64px',
+        maxWidth: '64px',
+        minWidth: '64px',
         transition: 'all 0.2s ease 0s'
     }
     return (

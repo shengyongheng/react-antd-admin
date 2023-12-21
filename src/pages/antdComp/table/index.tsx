@@ -10,6 +10,7 @@ interface DataType {
     age: number;
     tags: string[];
     address: string;
+    description?: string
 }
 
 interface IPramas {
@@ -106,6 +107,18 @@ const TableDemo: React.FC = () => {
                     })
                 }
             }
+            expandable={{
+                expandedRowRender: (record) => (
+                    <p
+                        style={{
+                            margin: 0,
+                        }}
+                    >
+                        {record.description}
+                    </p>
+                ),
+                rowExpandable: (record) => record.age > 50,
+            }}
             pagination={pagination} />
     </>;
 };
