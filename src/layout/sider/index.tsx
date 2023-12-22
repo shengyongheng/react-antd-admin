@@ -24,7 +24,7 @@ const Sider: FC<IProps> = (props): React.JSX.Element => {
         // 1. 获取有权限的菜单列表 2. 删除 authRequired 属性 3. 添加菜单 icon
         const menuItems = addIconToMenu(deleteAuthPro(getMenuItem(items, userType as string)))
         setMenuItems(menuItems)
-        console.log(menuItems, 'menuItems');
+        // console.log(menuItems, 'menuItems');
     }, [items]); // eslint-disable-line
 
     const getMenuItem = (items: MenuItemWithAuth, userType: string) => {

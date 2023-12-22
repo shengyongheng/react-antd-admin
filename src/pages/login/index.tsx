@@ -6,11 +6,12 @@ import { setToken } from "../../redux-store/user/action";
 import { userNameReg, passwordReg } from "@utils/regExps"
 import { UserOutlined } from '@ant-design/icons';
 import CommonForm from "@components/antdForm"
-import { ICommonFormProps } from "@components/antdForm/models"
-interface IProps { }
-const Login: FC = (props: IProps): React.JSX.Element => {
+import { ICommonFormProps, IRefProps } from "@components/antdForm/models"
+
+const Login: FC = (): React.JSX.Element => {
   // 城市列表
   const [cityLists, setCityLists] = useState<{ label: string; value: string }[]>([]);
+  const loginFormRef = React.useRef<IRefProps>(null);
   // 登录表单
   const loginFormItems = useMemo<ICommonFormProps['formItems']>(() => {
     return [

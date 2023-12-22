@@ -15,7 +15,7 @@ let env = process.env.NODE_ENV as 'development' | 'production';
 const router = new BrowserRouter()
 
 // 假设我们某个项目后端接口不管请求成功与失败，返回的结构永远是code、message、results的话我们可以定义一个这样的数据类型。
-interface Response<T> { // T 代表后端返回数据的格式
+interface Response<T = any> { // T 代表后端返回数据的格式
     states: number;
     message: string;
     data: T;

@@ -1,22 +1,30 @@
-import React, { FC, useState, useEffect } from 'react'
+import React, { forwardRef, useImperativeHandle } from 'react'
 import { Form, Input, Checkbox, Select, InputNumber, DatePicker } from 'antd';
-import { ICommonFormProps, IItemTypes } from "./models"
+
+import { ICommonFormProps, IItemTypes, IRefProps } from "./models"
 const { Password } = Input
 const { RangePicker } = DatePicker;
-const CommonForm = (props: ICommonFormProps): React.JSX.Element => {
+
+const CommonForm = forwardRef<IRefProps, ICommonFormProps>((props, ref): React.JSX.Element => {
     const {
         formItems,
         handleSubmit,
-        children
+        children,
+        initialValues
     } = props;
 
     const [form] = Form.useForm();
+
+    useImperativeHandle(ref, () => ({
+        form,
+    }));
 
     const renderFormItems = (itemType: IItemTypes, itemProps: any) => {
         switch (itemType) {
             case 'Input': return <Input {...itemProps} />;
             case 'Password': return <Password {...itemProps} />;
             case 'Select': return <Select {...itemProps} />;
+            case 'DatePicker': return <DatePicker {...itemProps} />;
             case 'RangePicker': return <RangePicker {...itemProps} />;
             case 'Checkbox': return <Checkbox.Group  {...itemProps} />;
             case 'InputNumber': return <InputNumber {...itemProps} />;
@@ -24,8 +32,7 @@ const CommonForm = (props: ICommonFormProps): React.JSX.Element => {
         }
     }
 
-    const onFinish = (value: any) => {
-        console.log('表单数据', value);
+    const onFinish = () => {
         form.validateFields().then(v => {
             handleSubmit()
         }).catch(err => {
@@ -45,7 +52,7 @@ const CommonForm = (props: ICommonFormProps): React.JSX.Element => {
                 wrapperCol={{ span: 16 }}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
-            // initialValues={initialValues}
+                initialValues={initialValues || {}}
             >
                 {
                     formItems.map((item, index) => {
@@ -64,6 +71,6 @@ const CommonForm = (props: ICommonFormProps): React.JSX.Element => {
             </Form>
         </div >
     )
-}
+})
 
 export default CommonForm
