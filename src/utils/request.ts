@@ -32,7 +32,7 @@ export class Request {
             (config: InternalAxiosRequestConfig) => {
                 const token = getToken() as string | null;
                 if (token) {
-                    config.headers!.Authorization = token;
+                    config.headers!.Authorization = 'Bearer ' + token;
                 }
                 return config
             },

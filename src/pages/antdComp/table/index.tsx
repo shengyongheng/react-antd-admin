@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import moment from 'moment';
 import type { ColumnsType } from 'antd/es/table';
 import { useAddTags, useTables } from "@hooks/index"
-import { getTableData, deleteUsersApi, addUsersApi, getUsersDetailApi } from "@/api/table"
+import { getTableData, deleteUsersApi, addUsersApi, getUsersDetailApi, updateUsersApi } from "@/api/table"
 import CommonForm from '@components/antdForm'
 import { IRefProps, ICommonFormProps } from "@components/antdForm/models"
 interface DataType {
@@ -17,7 +17,6 @@ interface DataType {
 }
 
 interface IPramas {
-    userId: string;
     pageSize: number;
     current: number;
 }
@@ -30,8 +29,8 @@ interface ITableData {
 }
 
 const TableDemo: React.FC = () => {
-    const [userId, setUserId] = useState('1');
     const [isFormModalOpen, setIsFormModalOpen] = useState(false);
+    const [updatingId, setUpdatingId] = useState<number>();
     const userFormRef = useRef<IRefProps>(null);
     const history = useHistory();
 
@@ -170,6 +169,7 @@ const TableDemo: React.FC = () => {
                                 birthdate: moment(res.birthdate),
                             })
                         })
+                        setUpdatingId(record.id)
                         setIsFormModalOpen(true);
                     }}>编辑</Button>
                     <Button danger onClick={() => {
@@ -186,7 +186,6 @@ const TableDemo: React.FC = () => {
         manual: false, // 手动触发
         defaultParams: [
             {
-                userId,
                 pageSize: 10,
                 current: 1
             }
@@ -196,6 +195,7 @@ const TableDemo: React.FC = () => {
     const deleteUsers = (userId: number) => {
         deleteUsersApi(userId).then(res => {
             message.success('删除成功');
+            run()
         });
     }
 
@@ -204,21 +204,27 @@ const TableDemo: React.FC = () => {
         userFormRef.current?.form.resetFields()
     }
 
-    const handleSubmit = () => {
-        addUsersApi(userFormRef.current?.form.getFieldsValue()).then(res => {
-            console.log(res);
-        })
-        cancelAdd()
+    const handleSubmit = (v: any, updatingId: number | undefined) => {
+        const fieldsValue = userFormRef.current?.form.getFieldsValue();
+        if (!updatingId) {
+            addUsersApi(fieldsValue).then(res => {
+                message.success('新增成功');
+                cancelAdd()
+                run()
+            })
+        } else {
+            updateUsersApi({ ...v, id: updatingId }).then(res => {
+                message.success('修改成功');
+                cancelAdd()
+                run()
+            })
+        }
+
     }
 
     return <>
-        <Input
-            onChange={(e) => setUserId(e.target.value)}
-            value={userId}
-            placeholder="Please enter userId"
-            style={{ width: 140, marginRight: 16 }}
-        />
         <Button onClick={() => {
+            setUpdatingId(undefined)
             setIsFormModalOpen(true);
         }}>新增用户</Button>
         <Table
@@ -230,7 +236,6 @@ const TableDemo: React.FC = () => {
                 (pagination, _, sorter) => { // 表格过滤需求不常见
                     console.log(pagination, sorter, 'tableOnChange');
                     run({
-                        userId,
                         pageSize: pagination.pageSize as number,
                         current: pagination.current as number
                     })
@@ -253,7 +258,7 @@ const TableDemo: React.FC = () => {
             title="新增用户"
             open={isFormModalOpen}
             onOk={() => {
-                userFormRef.current?.form.submit()
+                userFormRef.current?.onFinish(updatingId)
             }}
             onCancel={cancelAdd}
         >

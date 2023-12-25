@@ -21,6 +21,7 @@ export interface ICommonFormProps {
 
 export interface IRefProps {
     form: FormInstance<any>,
+    onFinish: (...args: any[]) => void
 }
 
 // 判断两个TS类型是否相同

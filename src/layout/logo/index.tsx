@@ -13,7 +13,7 @@ const Logo: FC = (props: IProps): React.JSX.Element => {
                 <img style={{ height: '32px' }} src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" alt="logo" />
                 <IfElse if={!inlineCollapsed}>
                     <span style={{
-                        color: 'rgba(0, 0, 0, 0.88)',
+                        color: '#fff',
                         fontWeight: 'bold',
                         fontSize: '18px',
                         marginLeft: '8px'

@@ -94,6 +94,7 @@ const Sider: FC<IProps> = (props): React.JSX.Element => {
             <Menu
                 mode="inline"
                 items={menuItems}
+                theme='dark'
                 openKeys={openKeys as string[]}
                 selectedKeys={(selectedKeys as string[])}
                 inlineCollapsed={inlineCollapsed}

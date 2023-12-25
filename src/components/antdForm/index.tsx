@@ -17,6 +17,7 @@ const CommonForm = forwardRef<IRefProps, ICommonFormProps>((props, ref): React.J
 
     useImperativeHandle(ref, () => ({
         form,
+        onFinish
     }));
 
     const renderFormItems = (itemType: IItemTypes, itemProps: any) => {
@@ -32,12 +33,14 @@ const CommonForm = forwardRef<IRefProps, ICommonFormProps>((props, ref): React.J
         }
     }
 
-    const onFinish = () => {
-        form.validateFields().then(v => {
-            handleSubmit()
-        }).catch(err => {
-            console.log(err);
-        })
+    const onFinish = (...args: any[]) => {
+        form.validateFields()
+            .then((v) => {
+                handleSubmit(v, ...args)
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
     const onFinishFailed = ({ values, errorFields, outOfDate }: any) => {

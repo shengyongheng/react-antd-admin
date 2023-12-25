@@ -8,7 +8,7 @@ export const getTableData = async <T, K>(params: K): Promise<T> => {
 }
 
 // 新增用户
-export const addUsersApi = async <T, K>(data: K): Promise<T> => {
+export const addUsersApi = async <T = any, K = any>(data: K): Promise<T> => {
     const response = await $http.post<T>('/api/user/add', data);
     return get(response, 'data.data');
 }
@@ -20,6 +20,11 @@ export const deleteUsersApi = async <T, K>(id: K): Promise<T> => {
             id
         }
     });
+    return get(response, 'data.data');
+}
+// 修改用户信息
+export const updateUsersApi = async <T = any, K = any>(data: K): Promise<T> => {
+    const response = await $http.post<T>('/api/user/update', data);
     return get(response, 'data.data');
 }
 
