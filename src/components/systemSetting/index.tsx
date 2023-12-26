@@ -14,16 +14,13 @@ const SystemSetting = (props: IProps): ReactElement => {
     const [open, setOpen] = useState(false);
 
     const setSystemTheme = (theme: ITheme) => {
-        // 替换主题
         /**
          * antd ConfigProvider 配置简单 支持的变量比较少，只支持 6 个变量 antd@4.17之后的版本适用
          */
         ConfigProvider.config({
-            prefixCls: 'ant',
             theme,
         });
     };
-
 
     const showDrawer = () => {
         setOpen(true);
@@ -34,24 +31,25 @@ const SystemSetting = (props: IProps): ReactElement => {
     };
     return (
         <div className={styles['setting-system']}>
-            <Button type="primary" onClick={showDrawer}>
+            <Button className={styles['open-setting-btn']} type="primary" onClick={showDrawer}>
                 <RocketTwoTone />
             </Button>
-            <Drawer title="Basic Drawer" placement="right" onClose={onClose} open={open}>
-                <div className={styles['theme']}>主题色</div>
-                {
-                    THEMES.map((item: ITheme) =>
-                        <Button
-                            key={item.primaryColor}
-                            type="primary"
-                            style={{ color: item.primaryColor }}
-                            onClick={() => {
-                                setSystemTheme(item)
-                            }}
-                        >
-                            修改主题色为{item.primaryColor}
-                        </Button>)
-                }
+            <Drawer title="系统设置" placement="right" onClose={onClose} open={open} getContainer={false}>
+                <div className='system-theme-color'>主题色</div>
+                <div className='system-themes'>
+                    {
+                        THEMES.map((item: ITheme) =>
+                            <Button
+                                key={item.primaryColor}
+                                type="primary"
+                                onClick={() => {
+                                    setSystemTheme(item)
+                                }}
+                            >
+                                {item.primaryColor}
+                            </Button>)
+                    }
+                </div>
             </Drawer>
         </div>
     )

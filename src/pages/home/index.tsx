@@ -1,6 +1,7 @@
 import React, { FC, useState, useEffect } from 'react'
 import { useSelector } from 'react-redux/es/hooks/useSelector'
 import { useAddTags, useCollapseRows } from "@hooks/index"
+import TooltipWrapper from '@/components/tooltipWrapper'
 import { } from 'antd'
 // import styles from './index.module.scss'
 import styles from './index.module.less'
@@ -30,6 +31,7 @@ const HomePage: FC = (props: IProps): React.JSX.Element => {
   }, []);
   return (
     <>
+      <TooltipWrapper text={collapseRowText || 'hello,world'} placement='bottom' maxWidth={200}></TooltipWrapper>
       token:{token}
       <div className={styles['less-test']}>Home</div>
       {/* 文本按行收起/展开 */}

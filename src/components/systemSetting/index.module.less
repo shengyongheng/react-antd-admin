@@ -1,5 +1,18 @@
 .setting-system {
-    .theme {
-        color: rebeccapurple
+    .open-setting-btn{
+        position: fixed;
+        top:60vh;
+        right:0;
+    }
+    :global{
+        .ant-drawer-body{
+            .system-theme-color {
+                color: var(--ant-primary-color);
+                font-weight: bold
+            } 
+            .system-themes{
+                .flex-layout(space-between,center);
+            }
+        }
     }
 }

@@ -16,7 +16,7 @@ const BreadCrumb: FC = (): ReactElement => {
     const { pathname } = location
 
     const breadCrumbClick = (item: any) => {
-        console.log(item.key, 'key-breadCrumbClick')
+        // console.log(item.key, 'key-breadCrumbClick')
         if (!item.children && pathname !== item.key) {
             history.push(item.key)
             if (tags.tagsList.some((tagItem: any) => tagItem.path === item.key)) {

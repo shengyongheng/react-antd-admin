@@ -10,10 +10,10 @@ import { PersistGate } from 'redux-persist/lib/integration/react';
 import store, { persistor } from './redux-store'
 // import 'antd/dist/antd.min.css'
 import 'antd/dist/antd.variable.min.css'
-// 全局 scss 样式
-// import './styles/index.scss';
 // 全局 less 样式
 import './styles/index.less';
+// 引入 mock 数据
+import "./mock";
 import SystemSetting from '@components/systemSetting';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -26,7 +26,7 @@ root.render(
         <Router>
           <Suspense fallback={<div>loading...</div>}>
             <App />
-            <SystemSetting ConfigProvider={ConfigProvider}/>
+            <SystemSetting ConfigProvider={ConfigProvider} />
           </Suspense>
         </Router>
       </PersistGate>

@@ -37,7 +37,6 @@ export function getNestBreadcrumbs(flatRoutes: Routes[], breadcrumbs: any) {
             }
         }
     })
-    console.log(breadcrumbs, 'typeof breadcrumbs');
     return breadcrumbs
 }
 

@@ -1,3 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+}
+
 ::-webkit-scrollbar-track {
     background-color: #fff;
 }
@@ -14,9 +24,10 @@
 }
 
 .ant-layout-sider {
-    height: 100vh;
     overflow: auto;
-
+    height:100%;
+    position: fixed;
+    z-index: 999;
     &::-webkit-scrollbar {
         display: none;
     }
@@ -33,6 +44,12 @@
     height: 56px;
 }
 
+.ant-layout-header{
+    position: fixed;
+    z-index: 999;
+    width: calc(100% - 80px);
+}
+
 .ant-layout-content {
-    margin: 0px 16px 16px;
+    margin: 56px 16px 16px;
 }

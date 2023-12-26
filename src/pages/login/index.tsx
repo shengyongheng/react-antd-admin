@@ -1,16 +1,18 @@
 import React, { FC, useState, useEffect, useMemo } from 'react'
-import { Button } from 'antd';
+import { Button, message } from 'antd';
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { setToken } from "../../redux-store/user/action";
 import { userNameReg, passwordReg } from "@utils/regExps"
 import { UserOutlined } from '@ant-design/icons';
 import CommonForm from "@components/antdForm"
-import { ICommonFormProps } from "@components/antdForm/models"
-interface IProps { }
-const Login: FC = (props: IProps): React.JSX.Element => {
-  // 城市列表
-  const [cityLists, setCityLists] = useState<{ label: string; value: string }[]>([]);
+import { ICommonFormProps, IRefProps } from "@components/antdForm/models"
+import { login, register } from "@/api/login";
+
+const Login: FC = (): React.JSX.Element => {
+  // 用户权限列表
+  const [userTypeLists, setUserTypeLists] = useState<{ label: string; value: string }[]>([]);
+  const loginFormRef = React.useRef<IRefProps>(null);
   // 登录表单
   const loginFormItems = useMemo<ICommonFormProps['formItems']>(() => {
     return [
@@ -62,73 +64,50 @@ const Login: FC = (props: IProps): React.JSX.Element => {
         }
       },
       {
-        label: '城市',
-        name: 'city',
+        label: '用户权限',
+        name: 'userType',
         itemType: 'Select',
         props: {
           // 动态选项
-          options: cityLists,
-          placeholder: '请选择城市'
+          options: userTypeLists,
+          placeholder: '请用户权限'
         }
       },
-      {
-        label: '时间范围',
-        name: 'rangePicker',
-        itemType: 'RangePicker',
-        props: {
-          placeholder: ['开始时间', '结束时间']
-        }
-      },
-      {
-        label: '水果',
-        name: 'fruits',
-        itemType: 'Checkbox',
-        props: {
-          // 固定选项
-          options: [
-            { label: 'Apple', value: 'Apple' },
-            { label: 'Pear', value: 'Pear' },
-            { label: 'Orange', value: 'Orange' },
-          ]
-        }
-      },
-      {
-        label: '数字输入框',
-        name: 'inputNumber',
-        itemType: "InputNumber",
-        props: {
-          min: 1,
-          max: 10,
-        }
-      }
     ]
-  }, [cityLists])
+  }, [userTypeLists])
   const history = useHistory()
   const dispatch = useDispatch();
-  const handleSubmit = () => {
-    localStorage.setItem('userType', 'users')
-    localStorage.setItem('token', 'test');
-    dispatch(setToken({ userType: 'users', token: 'test' }));
-    history.push({
-      pathname: '/home'
+  const handleSubmit = (v: any) => {
+    // 登录
+    login(v).then((res: any) => {
+      const { userType, token } = res;
+      localStorage.setItem('userType', userType)
+      localStorage.setItem('token', token);
+      dispatch(setToken({ userType, token }));
+      history.push({
+        pathname: '/home'
+      })
+    }).catch(() => {
+      message.error("用户名或密码错误");
     })
+
+    // 注册
+    // register(v).then(res => {
+    //   console.log(res);
+    // })
   }
 
-  // 获取城市列表
+  // 获取用户权限列表
   useEffect(() => {
     setTimeout(() => {
-      setCityLists([
+      setUserTypeLists([
         {
-          value: 'HangZhou',
-          label: 'HangZhou #310000',
+          value: 'users',
+          label: '普通用户',
         },
         {
-          value: 'NingBo',
-          label: 'NingBo #315000',
-        },
-        {
-          value: 'WenZhou',
-          label: 'WenZhou #325000',
+          value: 'admin',
+          label: '管理员',
         },
       ]);
     }, 2000)

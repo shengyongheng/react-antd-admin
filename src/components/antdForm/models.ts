@@ -1,6 +1,6 @@
 import React from "react"
-
-export type IItemTypes = 'Input' | 'Password' | 'Select' | 'RangePicker' | 'Checkbox' | 'InputNumber'
+import type { FormInstance } from 'antd/es/form';
+export type IItemTypes = 'Input' | 'Password' | 'Select' | 'RangePicker' | 'DatePicker' | 'Checkbox' | 'InputNumber'
 
 interface IFormItemProps {
     label: React.ReactNode
@@ -16,6 +16,12 @@ export interface ICommonFormProps {
     formItems: IFormItemProps[]
     formConfig?: any
     children?: React.ReactElement
+    initialValues?: any
+}
+
+export interface IRefProps {
+    form: FormInstance<any>,
+    onFinish: (...args: any[]) => void
 }
 
 // 判断两个TS类型是否相同

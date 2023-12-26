@@ -30,7 +30,7 @@ module.exports = override(
         loaders[10].use.push({
             loader: 'style-resources-loader',
             options: {
-                patterns: path.resolve(__dirname, 'src/styles/globalVars.less')//全局引入公共的scss 文件
+                patterns: path.resolve(__dirname, 'src/styles/globalVars.less')//全局引入公共的 less 文件
             }
         })
         return config
