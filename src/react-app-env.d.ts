@@ -21,6 +21,7 @@ interface Routes {
   component?: any
   exact?: boolean
   whiteRoute: boolean
+  redirect?: string
   children?: Routes[]
   meta: {
     title: string
