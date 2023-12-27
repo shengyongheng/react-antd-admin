@@ -63,78 +63,78 @@ export const routes: Routes[] = [
                 }
             },
             // 订单管理
-            {
-                path: '/orders',
-                whiteRoute: false,
-                redirect: '/orders/wines',
-                children: [
-                    {
-                        path: '/orders/wines',
-                        component: Wines,
-                        whiteRoute: false,
-                        meta: {
-                            title: '酒水管理',
-                            authRequired: ['users', 'admin'],
-                            parent: '订单管理',
-                            parentKey: '/orders'
-                        }
-                    },
-                    {
-                        path: '/orders/fruit',
-                        redirect: '/orders/fruit/apple',
-                        whiteRoute: false,
-                        // 三级菜单
-                        // children: [
-                        //     {
-                        //         path: '/orders/fruit/watermelon',
-                        //         component: WatermelonOrder,
-                        //         whiteRoute: false,
-                        //         meta: {
-                        //             title: '西瓜订单',
-                        //             authRequired: ['users'],
-                        //             parent: '水果管理',
-                        //             parentKey: '/orders/fruit',
-                        //         }
-                        //     },
-                        //     {
-                        //         path: '/orders/fruit/apple/detail',
-                        //         component: AppleOrderDetail,
-                        //         whiteRoute: false,
-                        //         meta: {
-                        //             title: '苹果订单详情',
-                        //             authRequired: ['users'],
-                        //             parent: '水果管理',
-                        //             parentKey: '/orders/fruit',
-                        //             hidden: true
-                        //         }
-                        //     },
-                        //     {
-                        //         path: '/orders/fruit/apple',
-                        //         component: AppleOrder,
-                        //         whiteRoute: false,
-                        //         meta: {
-                        //             title: '苹果订单',
-                        //             authRequired: ['users'],
-                        //             parent: '水果管理',
-                        //             parentKey: '/orders/fruit',
-                        //         }
-                        //     },
-                        // ],
-                        meta: {
-                            title: '水果管理',
-                            authRequired: ['users'],
-                            parent: '订单管理',
-                            parentKey: '/orders'
-                        }
-                    },
-                ],
-                meta: {
-                    title: '订单管理',
-                    authRequired: ['users', 'admin'],
-                    // parent: '订单管理',
-                    parentKey: '/'
-                }
-            },
+            // {
+            //     path: '/orders',
+            //     whiteRoute: false,
+            //     redirect: '/orders/wines',
+            //     children: [
+            //         {
+            //             path: '/orders/wines',
+            //             component: Wines,
+            //             whiteRoute: false,
+            //             meta: {
+            //                 title: '酒水管理',
+            //                 authRequired: ['users', 'admin'],
+            //                 parent: '订单管理',
+            //                 parentKey: '/orders'
+            //             }
+            //         },
+            //         {
+            //             path: '/orders/fruit',
+            //             redirect: '/orders/fruit/apple',
+            //             whiteRoute: false,
+            //             // 三级菜单
+            //             // children: [
+            //             //     {
+            //             //         path: '/orders/fruit/watermelon',
+            //             //         component: WatermelonOrder,
+            //             //         whiteRoute: false,
+            //             //         meta: {
+            //             //             title: '西瓜订单',
+            //             //             authRequired: ['users'],
+            //             //             parent: '水果管理',
+            //             //             parentKey: '/orders/fruit',
+            //             //         }
+            //             //     },
+            //             //     {
+            //             //         path: '/orders/fruit/apple/detail',
+            //             //         component: AppleOrderDetail,
+            //             //         whiteRoute: false,
+            //             //         meta: {
+            //             //             title: '苹果订单详情',
+            //             //             authRequired: ['users'],
+            //             //             parent: '水果管理',
+            //             //             parentKey: '/orders/fruit',
+            //             //             hidden: true
+            //             //         }
+            //             //     },
+            //             //     {
+            //             //         path: '/orders/fruit/apple',
+            //             //         component: AppleOrder,
+            //             //         whiteRoute: false,
+            //             //         meta: {
+            //             //             title: '苹果订单',
+            //             //             authRequired: ['users'],
+            //             //             parent: '水果管理',
+            //             //             parentKey: '/orders/fruit',
+            //             //         }
+            //             //     },
+            //             // ],
+            //             meta: {
+            //                 title: '水果管理',
+            //                 authRequired: ['users'],
+            //                 parent: '订单管理',
+            //                 parentKey: '/orders'
+            //             }
+            //         },
+            //     ],
+            //     meta: {
+            //         title: '订单管理',
+            //         authRequired: ['users', 'admin'],
+            //         // parent: '订单管理',
+            //         parentKey: '/'
+            //     }
+            // },
             // antd组件
             {
                 path: '/antd',

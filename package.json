@@ -19,6 +19,7 @@
     "classnames": "^2.3.2",
     "craco-less": "^3.0.1",
     "craco-sass-resources-loader": "^1.1.0",
+    "http-proxy-middleware": "^2.0.6",
     "less": "^4.2.0",
     "less-loader": "5.0.0",
     "lodash": "^4.17.21",
