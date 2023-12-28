@@ -13,7 +13,7 @@ const AppleOrder = (props: IProps): ReactElement => {
         <div className={styles['apple-order-page']}>
             苹果订单
             <Button type="primary" onClick={() => {
-                history.push('/orders/fruit/apple/detail/1');
+                history.push('/orders/fruit/apple/1');
             }}>苹果订单详情</Button>
         </div>
     )

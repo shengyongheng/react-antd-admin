@@ -160,7 +160,7 @@ const TableDemo: React.FC = () => {
             render: (_, record) => (
                 <Space size="middle">
                     <Button type='primary' onClick={() => {
-                        history.push(`/antd/table/detail/${record.id}`)
+                        history.push(`/antd/table/${record.id}`)
                     }}>详情</Button>
                     <Button onClick={() => {
                         getUsersDetailApi<any, number>(Number(record.id)).then(res => {

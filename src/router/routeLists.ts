@@ -110,18 +110,6 @@ export const routes: Routes[] = [
             }
           },
           {
-            path: '/orders/fruit/apple/detail/:id',
-            component: AppleOrderDetail,
-            whiteRoute: false,
-            meta: {
-              title: '苹果订单详情',
-              authRequired: ['users'],
-              parent: '水果管理',
-              parentKey: '/orders/fruit',
-              hidden: true
-            }
-          },
-          {
             path: '/orders/fruit/apple',
             component: AppleOrder,
             whiteRoute: false,
@@ -130,6 +118,18 @@ export const routes: Routes[] = [
               authRequired: ['users'],
               parent: '水果管理',
               parentKey: '/orders/fruit',
+            }
+          },
+          {
+            path: '/orders/fruit/apple/:id',
+            component: AppleOrderDetail,
+            whiteRoute: false,
+            meta: {
+              title: '苹果订单详情',
+              authRequired: ['users'],
+              parent: '水果管理',
+              parentKey: '/orders/fruit',
+              hidden: true
             }
           },
         ],
@@ -152,6 +152,7 @@ export const routes: Routes[] = [
           parentKey: '/screen'
         }
       },
+      //#region 
       // demo管理
       {
         path: '/demos/demo',
@@ -208,7 +209,7 @@ export const routes: Routes[] = [
           parentKey: '/demos'
         }
       },
-      // antd组件 TableDemo
+      // antd组件
       {
         path: '/antd/cascader',
         component: CascaderDemo,
@@ -220,18 +221,7 @@ export const routes: Routes[] = [
           parentKey: '/antd'
         }
       },
-      {
-        path: '/antd/table/detail/:id',
-        component: TableDetail,
-        whiteRoute: false,
-        meta: {
-          title: '表格详情',
-          authRequired: ['users', 'admin'],
-          parent: '表格组件',
-          parentKey: '/antd/table',
-          hidden: true
-        }
-      },
+      //#endregion
       {
         path: '/antd/table',
         // exact: true,
@@ -242,6 +232,18 @@ export const routes: Routes[] = [
           authRequired: ['users', 'admin'],
           parent: 'Antd',
           parentKey: '/antd'
+        }
+      },
+      {
+        path: '/antd/table/:id',
+        component: TableDetail,
+        whiteRoute: false,
+        meta: {
+          title: '表格详情',
+          authRequired: ['users', 'admin'],
+          parent: '表格组件',
+          parentKey: '/antd/table',
+          hidden: true
         }
       },
       // 404页面
