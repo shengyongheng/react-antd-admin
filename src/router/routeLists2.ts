@@ -62,6 +62,7 @@ export const routes: Routes[] = [
                     authRequired: ['users', 'admin']
                 }
             },
+            //#region 
             // 订单管理
             // {
             //     path: '/orders',
@@ -135,6 +136,7 @@ export const routes: Routes[] = [
             //         parentKey: '/'
             //     }
             // },
+            //#endregion
             // antd组件
             {
                 path: '/antd',

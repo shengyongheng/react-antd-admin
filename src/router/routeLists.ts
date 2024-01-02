@@ -113,6 +113,7 @@ export const routes: Routes[] = [
             path: '/orders/fruit/apple',
             component: AppleOrder,
             whiteRoute: false,
+            exact: true,
             meta: {
               title: '苹果订单',
               authRequired: ['users'],
@@ -227,6 +228,7 @@ export const routes: Routes[] = [
         // exact: true,
         component: TableDemo,
         whiteRoute: false,
+        exact: true,
         meta: {
           title: '表格组件',
           authRequired: ['users', 'admin'],

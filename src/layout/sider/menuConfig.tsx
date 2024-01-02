@@ -1,22 +1,3 @@
-// import { AppstoreOutlined, MailOutlined, SettingOutlined, PieChartOutlined } from '@ant-design/icons';
-
-// type MenuItem = Required<MenuProps>['items'][number];
-
-// type IAuthRequireType = 'users' | 'admin'
-
-// type IAuthRequire<T> = { authRequired: Array<T> }
-
-// type MenuItemWithAuth = Array<MenuItem & IAuthRequire<IAuthRequireType> & { children?: Array<MenuItem & IAuthRequire<IAuthRequireType> & { children?: Array<MenuItem & IAuthRequire<IAuthRequireType>> }> }>;
-
-// // 自定义 Pick 工具类型
-// type MyPick<T, K extends keyof T> = {
-//     [Key in K]: T[Key]
-// }
-
-// type MyDiGui<T, K> = Array<T & K & { children?: Array<T & K & { children?: Array<T & K> }> }>
-
-// type MenuItemWithAuth2 = MyDiGui<MenuItem, IAuthRequire<IAuthRequireType>>
-
 export const items: MenuItemWithAuth = [
     {
         key: '/antd',

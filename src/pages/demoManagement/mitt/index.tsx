@@ -1,8 +1,10 @@
 import React, { FC, ReactElement, useState, useEffect } from 'react';
 import emitter from '@/mitt';
 import MittChild from './components/mittChild'
+import { useAddTags } from "@hooks/useAddTags"
 
 const Mitt: FC = (): ReactElement => {
+    useAddTags();
     const [message, setMessage] = useState("默认message");
     const onSetMessage = (data: any) => {
         setMessage(data);

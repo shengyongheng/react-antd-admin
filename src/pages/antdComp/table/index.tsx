@@ -260,7 +260,7 @@ const TableDemo: React.FC = () => {
             }}
             pagination={pagination} />
         <Modal
-            title="新增用户"
+            title={`${updatingId ? '编辑' : '新增'}用户`}
             open={isFormModalOpen}
             onOk={() => {
                 userFormRef.current?.onFinish(updatingId)
