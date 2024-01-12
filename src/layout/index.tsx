@@ -28,7 +28,7 @@ const Layouts: FC<IProps> = ({ routes, children }): React.JSX.Element => {
                     <Logo></Logo>
                     <SiderView></SiderView>
                 </Sider>
-                <Layout style={{ minHeight: '100vh' }}>
+                <Layout style={{ height: '100vh' }}>
                     <Header>
                         <HeaderView></HeaderView>
                     </Header>

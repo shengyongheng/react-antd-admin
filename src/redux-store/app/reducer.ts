@@ -6,7 +6,7 @@ export interface IAppInit {
 }
 
 const initStates: IAppInit = getStorage('app') || {
-    inlineCollapsed: true
+    inlineCollapsed: false
 }
 
 const appReducer = (initState: IAppInit = initStates, action: { type: string; payload: any }) => {

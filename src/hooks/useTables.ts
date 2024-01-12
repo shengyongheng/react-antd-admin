@@ -85,7 +85,7 @@ export const useTables = <ITableData, IPrarms>(getTableData: (params?: IPrarms) 
         error,
         selectedRowKeys, // 选中的行
         rowSelection, // 多选框配置
-        pagination: data.length < 10 ? pagination : false, // 分页配置
+        pagination: data?.length > 10 ? pagination : false, // 分页配置
         run,
         cancel,
     };
