@@ -1,6 +1,6 @@
 /// <reference types="react-scripts" />
 
-declare module 'react-router-dom'
+// declare module 'react-router-dom'
 declare module "*.less" {
   const content: { [className: string]: string };
   export default content;
