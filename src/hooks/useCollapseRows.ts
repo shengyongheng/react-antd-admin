@@ -16,7 +16,7 @@ export const useCollapseRows = (eleId: string, value: string, rows: number) => {
     const allRows = clientHeight && clientHeight / lineHeightRef.current;
     ele.style.height = rows * lineHeightRef.current + 16 + 'px';
     setIsCollapse(allRows && allRows > rows ? true : false);
-  }, [value]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [value]); // eslint-disable-line
 
   return { isCollapse, setIsCollapse, lineHeight: lineHeightRef.current };
 };
