@@ -43,7 +43,22 @@ const BreadCrumb: FC = (): ReactElement => {
             <Breadcrumb separator=">">
                 {pathSnippets.map((_: any, index: number) => {
                     const url = `/${pathSnippets.slice(0, index + 1).join('/')}`
-                    const breadcrumb = breadcrumbs.find(item => item.key === url)
+                    const breadcrumb = breadcrumbs.find(item => {
+                        const breadcrumbSnippets = item.key.split('/').slice(1)
+                        for (let snippetIndex = 0; snippetIndex < breadcrumbSnippets.length; snippetIndex++) {
+                            if (breadcrumbSnippets[snippetIndex] !== url.split('/').slice(1)[snippetIndex]) {
+                                if (!breadcrumbSnippets[snippetIndex]?.includes(':')) {
+                                    return false
+                                } else return true
+                            }
+                        }
+                        return item.key === url
+                    })
+                    // console.log(breadcrumbs, 'breadcrumbs');
+                    // debugger;
+                    // console.log(pathSnippets, 'pathSnippets');
+                    // console.log(breadcrumb, 'breadcrumb');
+                    // console.log(url.split('/').slice(1), 'url.split.slice(1)');
                     document.title = breadcrumb?.label; // 设置浏览器标签名称
                     return <Breadcrumb.Item key={url}
                         // 下拉菜单配置

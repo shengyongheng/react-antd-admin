@@ -1,13 +1,14 @@
 import { useRequest } from "ahooks";
 import { Options } from "ahooks/es/useRequest/src/types";
 import { useState } from "react";
+import type { TablePaginationConfig } from 'antd/es/table';
 import { Table } from 'antd';
 import type { TableRowSelection } from 'antd/es/table/interface';
 
 export const useTables = <ITableData, IPrarms>(getTableData: (params?: IPrarms) => Promise<ITableData>, options?: Options<ITableData, IPrarms[]>) => {
     const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
 
-    const [pagination, setPagination] = useState({
+    const [pagination, setPagination] = useState<TablePaginationConfig | false>({
         total: 0,
         current: 0,
         pageSize: 10,
@@ -84,7 +85,7 @@ export const useTables = <ITableData, IPrarms>(getTableData: (params?: IPrarms) 
         error,
         selectedRowKeys, // 选中的行
         rowSelection, // 多选框配置
-        pagination, // 分页配置
+        pagination: data?.length > 10 ? pagination : false, // 分页配置
         run,
         cancel,
     };

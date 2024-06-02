@@ -1,7 +1,7 @@
 import React, { FC, useState, useEffect } from 'react';
 import { useHistory, useParams } from "react-router-dom"
-import { observer } from "mobx-react-lite"
-import { useStore } from "../../../mobx-store"
+// import { observer } from "mobx-react-lite"
+// import { useStore } from "../../../mobx-store"
 import { useAddTags } from "@hooks/useAddTags"
 import { Button } from 'antd'
 import {
@@ -15,7 +15,7 @@ const Icons: FC<IProps> = (props): React.JSX.Element => {
     const history = useHistory();
     const params = useParams();
     useAddTags()
-    const { demoStore: { name, changeNameOfDemo } } = useStore();
+    // const { demoStore: { name, changeNameOfDemo } } = useStore();
     useEffect(() => {
         console.log(params);
         // console.log(name, changeNameOfDemo);
@@ -29,13 +29,14 @@ const Icons: FC<IProps> = (props): React.JSX.Element => {
         <>
             Antd Icon : <UserOutlined></UserOutlined>
             <br />
-            DemoStore 中的数据: {name}
+            {/* DemoStore 中的数据: {name} */}
             <br />
-            <Button onClick={() => { changeNameOfDemo('new Demo') }}>修改DemoStore 中的数据</Button>
+            {/* <Button onClick={() => { changeNameOfDemo('new Demo') }}>修改DemoStore 中的数据</Button> */}
             <br />
             <Button onClick={goToDemo}>跳转到Demo组件</Button>
         </>
     )
 }
 
-export default observer(Icons)
+// export default observer(Icons)
+export default Icons

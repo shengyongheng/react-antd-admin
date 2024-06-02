@@ -160,7 +160,7 @@ const TableDemo: React.FC = () => {
             render: (_, record) => (
                 <Space size="middle">
                     <Button type='primary' onClick={() => {
-                        history.push(`/antd/table/detail/${record.id}`)
+                        history.push(`/antd/table/${record.id}`)
                     }}>详情</Button>
                     <Button onClick={() => {
                         getUsersDetailApi<any, number>(Number(record.id)).then(res => {
@@ -223,6 +223,11 @@ const TableDemo: React.FC = () => {
     }
 
     return <>
+        {/* <CommonForm
+            ref={userFormRef}
+            formItems={usersFormItems}
+            handleSubmit={handleSubmit}
+        /> */}
         <Button onClick={() => {
             setUpdatingId(undefined)
             setIsFormModalOpen(true);
@@ -255,7 +260,7 @@ const TableDemo: React.FC = () => {
             }}
             pagination={pagination} />
         <Modal
-            title="新增用户"
+            title={`${updatingId ? '编辑' : '新增'}用户`}
             open={isFormModalOpen}
             onOk={() => {
                 userFormRef.current?.onFinish(updatingId)

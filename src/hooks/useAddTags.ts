@@ -13,5 +13,5 @@ export const useAddTags = (title?: string) => {
         const { pathname } = location
         const tagLabel = title || document.title || ''
         dispatch(addTags({ path: pathname, label: tagLabel }))
-    }, []);
+    }, [location]);
 }
