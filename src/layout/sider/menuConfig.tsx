@@ -113,6 +113,11 @@ export const items: MenuItemWithAuth = [
                 label: 'UseImperativeHandle',
                 authRequired: ['users', 'admin'],
             },
+            {
+                key: '/demos/editableTable',
+                label: 'EditableTable',
+                authRequired: ['users', 'admin'],
+            },
         ],
         label: 'Demo管理',
         authRequired: ['users', 'admin'],

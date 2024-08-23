@@ -2,10 +2,11 @@ import React, { FC, useState, useEffect } from 'react'
 import { useSelector } from 'react-redux/es/hooks/useSelector'
 import { useAddTags, useCollapseRows } from '@hooks/index'
 import TooltipWrapper from '@/components/tooltipWrapper'
-import {} from 'antd'
 // import styles from './index.module.scss'
 import styles from './index.module.less'
-interface IProps {}
+import { KmsIcon } from '@/components/svgLazyLoad'
+// import AISvg from '/assets/icons/ai.svg'
+interface IProps { }
 const HomePage: FC = (props: IProps): React.JSX.Element => {
   const token = useSelector((state: any) => state.user.token)
   useAddTags()
@@ -47,7 +48,13 @@ const HomePage: FC = (props: IProps): React.JSX.Element => {
           {isCollapse ? '展开' : '收起'}
         </div>
       </div>
-      <div>
+      <div id='id1' onClick={() => {
+        const cloneNodeFalse = document.getElementById('id1')?.cloneNode()
+        const cloneNodeTrue = document.getElementById('id1')?.cloneNode(true)
+        console.log(cloneNodeFalse, 'cloneNodeFalse');
+        console.log(cloneNodeTrue, 'cloneNodeTrue');
+
+      }}>
         <h2>受控和非受控组件</h2>
         <p>受控组件</p>
         <input
@@ -57,6 +64,9 @@ const HomePage: FC = (props: IProps): React.JSX.Element => {
           }}
         />
       </div>
+      <h2>SVG 懒加载优化</h2>
+      {/* <img src={AISvg} alt="" /> */}
+      <KmsIcon iconPath='/assets/icons/ai.svg' variousColors />
     </>
   )
 }

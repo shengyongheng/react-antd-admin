@@ -7,7 +7,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 // import store from './mobx-store'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/lib/integration/react';
-import store, { persistor } from './redux-store'
+import store, { persistor } from './store'
 // import 'antd/dist/antd.min.css'
 import 'antd/dist/antd.variable.min.css'
 // 全局 less 样式

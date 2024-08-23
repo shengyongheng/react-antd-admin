@@ -1,19 +1,20 @@
 .header-container {
-    height: 56px;
+  width: 100%;
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .header-left {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    .header-left{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap:16px;
-    }
-    :global {
-      .user-info {
-        .username {
-          cursor: pointer;
-        }
+    gap: 16px;
+  }
+  :global {
+    .user-info {
+      .username {
+        cursor: pointer;
       }
     }
   }
+}

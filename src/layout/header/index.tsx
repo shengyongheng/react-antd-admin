@@ -5,7 +5,7 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
 } from '@ant-design/icons';
-import { setInlineCollapsed } from "@store/app/action"
+import { setInlineCollapsed } from "@/store/app/action"
 import BreadCrumb from '@components/breadCrumb'
 import { useSelector, useDispatch } from 'react-redux'
 import { Dropdown } from 'antd'

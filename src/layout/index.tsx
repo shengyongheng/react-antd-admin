@@ -28,8 +28,8 @@ const Layouts: FC<IProps> = ({ routes, children }): React.JSX.Element => {
                     <Logo></Logo>
                     <SiderView></SiderView>
                 </Sider>
-                <Layout style={{ height: '100vh' }}>
-                    <Header>
+                <Layout style={{ height: '100vh', width: inlineCollapsed ? 'calc(100% - 80px)' : 'calc(100% - 220px)' }}>
+                    <Header style={{ width: "100%" }}>
                         <HeaderView></HeaderView>
                     </Header>
                     <Content>

@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect, useMemo } from "react";
 import { Button, message } from "antd";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setToken } from "../../redux-store/user/action";
+import { setToken } from "../../store/user/action";
 import { userNameReg, passwordReg } from "@utils/regExps";
 import { UserOutlined } from "@ant-design/icons";
 import CommonForm from "@components/antdForm";

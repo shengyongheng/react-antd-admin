@@ -9,19 +9,16 @@ const Demo = lazy(() => import('../pages/demoManagement/demo'))
 const Icons = lazy(() => import('../pages/demoManagement/icons'))
 const Mitt = lazy(() => import('../pages/demoManagement/mitt'))
 const UseRef = lazy(() => import('../pages/demoManagement/useRef'))
-const UseImperativeHandle = lazy(
-  () => import('../pages/demoManagement/imperativeHandle')
-)
+const UseImperativeHandle = lazy(() => import('../pages/demoManagement/imperativeHandle'))
+const EditableTable = lazy(() => import('../pages/demoManagement/editableTable'))
 const ScreenLists = lazy(() => import('../pages/dataScreen/screenLists'))
 const Wines = lazy(() => import('../pages/ordersManagement/wines'))
 const Fruit = lazy(() => import('../pages/ordersManagement/fruit'))
-const WatermelonOrder = lazy(
-  () => import('../pages/ordersManagement/fruit/pages/WatermelonOrder')
+const WatermelonOrder = lazy(() => import('../pages/ordersManagement/fruit/pages/WatermelonOrder'))
+const AppleOrder = lazy(() => import('../pages/ordersManagement/fruit/pages/appleOrder'))
+const AppleOrderDetail = lazy(
+  () => import('../pages/ordersManagement/fruit/pages/appleOrder/components/appleOrderDetail/index')
 )
-const AppleOrder = lazy(
-  () => import('../pages/ordersManagement/fruit/pages/appleOrder')
-)
-const AppleOrderDetail = lazy(() => import('../pages/ordersManagement/fruit/pages/appleOrder/components/appleOrderDetail/index'))
 const CascaderDemo = lazy(() => import('../pages/antdComp/cascader'))
 const TableDemo = lazy(() => import('../pages/antdComp/table'))
 const TableDetail = lazy(() => import('../pages/antdComp/table/components/tableDetail/index'))
@@ -33,7 +30,7 @@ export const routes: Routes[] = [
     whiteRoute: true,
     meta: {
       title: '登录',
-    }
+    },
   },
   {
     path: '/profile',
@@ -41,7 +38,7 @@ export const routes: Routes[] = [
     whiteRoute: false,
     meta: {
       title: '个人信息',
-    }
+    },
   },
   {
     path: '/',
@@ -55,8 +52,8 @@ export const routes: Routes[] = [
         whiteRoute: false,
         meta: {
           title: '首页',
-          authRequired: ['users', 'admin']
-        }
+          authRequired: ['users', 'admin'],
+        },
       },
       // 用户管理
       {
@@ -67,8 +64,8 @@ export const routes: Routes[] = [
           title: '管理员列表',
           authRequired: ['admin'],
           parent: '人员管理',
-          parentKey: '/users'
-        }
+          parentKey: '/users',
+        },
       },
       {
         path: '/users/vip',
@@ -78,8 +75,8 @@ export const routes: Routes[] = [
           title: 'VIP列表',
           authRequired: ['admin'],
           parent: '人员管理',
-          parentKey: '/users'
-        }
+          parentKey: '/users',
+        },
       },
       // 订单管理
       {
@@ -90,8 +87,8 @@ export const routes: Routes[] = [
           title: '酒水管理',
           authRequired: ['users', 'admin'],
           parent: '订单管理',
-          parentKey: '/orders'
-        }
+          parentKey: '/orders',
+        },
       },
       {
         path: '/orders/fruit',
@@ -107,7 +104,7 @@ export const routes: Routes[] = [
               authRequired: ['users'],
               parent: '水果管理',
               parentKey: '/orders/fruit',
-            }
+            },
           },
           {
             path: '/orders/fruit/apple',
@@ -119,7 +116,7 @@ export const routes: Routes[] = [
               authRequired: ['users'],
               parent: '水果管理',
               parentKey: '/orders/fruit',
-            }
+            },
           },
           {
             path: '/orders/fruit/apple/:id',
@@ -130,16 +127,16 @@ export const routes: Routes[] = [
               authRequired: ['users'],
               parent: '水果管理',
               parentKey: '/orders/fruit',
-              hidden: true
-            }
+              hidden: true,
+            },
           },
         ],
         meta: {
           title: '水果管理',
           authRequired: ['users'],
           parent: '订单管理',
-          parentKey: '/orders'
-        }
+          parentKey: '/orders',
+        },
       },
       // 数据大屏
       {
@@ -150,10 +147,10 @@ export const routes: Routes[] = [
           title: '数据大屏列表',
           authRequired: ['admin', 'users'],
           parent: '数据大屏',
-          parentKey: '/screen'
-        }
+          parentKey: '/screen',
+        },
       },
-      //#region 
+      //#region
       // demo管理
       {
         path: '/demos/demo',
@@ -163,8 +160,8 @@ export const routes: Routes[] = [
           title: 'DEMO',
           authRequired: ['users', 'admin'],
           parent: 'DEMOS',
-          parentKey: '/demos'
-        }
+          parentKey: '/demos',
+        },
       },
       {
         path: '/demos/icon',
@@ -174,8 +171,8 @@ export const routes: Routes[] = [
           title: 'ICON',
           authRequired: ['users', 'admin'],
           parent: 'DEMOS',
-          parentKey: '/demos'
-        }
+          parentKey: '/demos',
+        },
       },
       {
         path: '/demos/mitt',
@@ -185,8 +182,8 @@ export const routes: Routes[] = [
           title: 'MITT',
           authRequired: ['users', 'admin'],
           parent: 'DEMOS',
-          parentKey: '/demos'
-        }
+          parentKey: '/demos',
+        },
       },
       {
         path: '/demos/useref',
@@ -196,8 +193,8 @@ export const routes: Routes[] = [
           title: 'useRef',
           authRequired: ['users', 'admin'],
           parent: 'DEMOS',
-          parentKey: '/demos'
-        }
+          parentKey: '/demos',
+        },
       },
       {
         path: '/demos/imperativeHandle',
@@ -207,8 +204,19 @@ export const routes: Routes[] = [
           title: 'UseImperativeHandle',
           authRequired: ['users', 'admin'],
           parent: 'DEMOS',
-          parentKey: '/demos'
-        }
+          parentKey: '/demos',
+        },
+      },
+      {
+        path: '/demos/editableTable',
+        component: EditableTable,
+        whiteRoute: false,
+        meta: {
+          title: 'EditableTable',
+          authRequired: ['users', 'admin'],
+          parent: 'DEMOS',
+          parentKey: '/demos',
+        },
       },
       // antd组件
       {
@@ -219,8 +227,8 @@ export const routes: Routes[] = [
           title: '级联选择器',
           authRequired: ['users', 'admin'],
           parent: 'Antd',
-          parentKey: '/antd'
-        }
+          parentKey: '/antd',
+        },
       },
       //#endregion
       {
@@ -233,8 +241,8 @@ export const routes: Routes[] = [
           title: '表格组件',
           authRequired: ['users', 'admin'],
           parent: 'Antd',
-          parentKey: '/antd'
-        }
+          parentKey: '/antd',
+        },
       },
       {
         path: '/antd/table/:id',
@@ -245,8 +253,8 @@ export const routes: Routes[] = [
           authRequired: ['users', 'admin'],
           parent: '表格组件',
           parentKey: '/antd/table',
-          hidden: true
-        }
+          hidden: true,
+        },
       },
       // 404页面
       {
@@ -255,13 +263,13 @@ export const routes: Routes[] = [
         whiteRoute: false,
         meta: {
           title: '404',
-          authRequired: ['users', 'admin']
-        }
-      }
+          authRequired: ['users', 'admin'],
+        },
+      },
     ],
     meta: {
       title: '系统',
-      authRequired: ['users', 'admin']
-    }
-  }
+      authRequired: ['users', 'admin'],
+    },
+  },
 ]
