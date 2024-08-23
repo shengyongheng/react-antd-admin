@@ -86,6 +86,8 @@
     ]
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.4.0",
+    "@commitlint/config-conventional": "^19.2.2",
     "@types/lodash": "^4.14.199",
     "commitizen": "^4.3.0",
     "customize-cra": "^1.0.0",
