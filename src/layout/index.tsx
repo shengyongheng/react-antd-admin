@@ -10,9 +10,8 @@ import Logo from './logo';
 const { Header, Content, Footer, Sider } = Layout;
 interface IProps {
     routes: Routes[]
-    children: any
 }
-const Layouts: FC<IProps> = ({ routes, children }): React.JSX.Element => {
+const Layouts: FC<IProps> = ({ routes }): React.JSX.Element => {
     const inlineCollapsed = useSelector((state: any) => state.app.inlineCollapsed)
     const seizeStyle = {
         width: inlineCollapsed ? '80px' : '220px',
@@ -33,9 +32,8 @@ const Layouts: FC<IProps> = ({ routes, children }): React.JSX.Element => {
                         <HeaderView></HeaderView>
                     </Header>
                     <Content>
-                        <Tags></Tags>
+                        {/* <Tags></Tags> */}
                         <MainView routes={routes}></MainView>
-                        {/* {children} */}
                     </Content>
                     <Footer>
                         <FooterView></FooterView>

@@ -1,5 +1,11 @@
 export const items: MenuItemWithAuth = [
     {
+        key: '/home',
+        label: '系统首页',
+        icon: 'PieChartOutlined',
+        authRequired: ['users', 'admin'],
+    },
+    {
         key: '/antd',
         icon: 'MailOutlined',
         children: [
@@ -45,12 +51,6 @@ export const items: MenuItemWithAuth = [
             }
         ],
         label: '订单管理',
-        authRequired: ['users', 'admin'],
-    },
-    {
-        key: '/home',
-        label: '系统首页',
-        icon: 'PieChartOutlined',
         authRequired: ['users', 'admin'],
     },
     {
