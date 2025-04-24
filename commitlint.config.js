@@ -5,8 +5,8 @@ module.exports = {
     "scope-empty": [2, "never"],
     "subject-empty": [2, "never"],
 
-    "body-empty": [2, "always"],
-    "footer-empty": [2, "always"],
+    "body-empty": [0, "always"],
+    "footer-empty": [0, "always"],
 
     "type-enum": [
       2,
@@ -25,6 +25,18 @@ module.exports = {
     ],
   },
   prompt: {
+    messages: {
+      type: "选择你要提交的类型：",
+      scope: "选择一个提交范围（必填）：",
+      customScope: "请输入自定义的提交范围：",
+      subject: "填写简短精炼的变更描述：\n",
+      body: '填写更加详细的变更描述（可选）。使用 "|" 换行：\n',
+      breaking: '列举非兼容性重大的变更（可选）。使用 "|" 换行：\n',
+      footerPrefixesSelect: "选择关联issue前缀（可选）：",
+      customFooterPrefix: "输入自定义issue前缀：",
+      footer: "列举关联issue (可选) 例如: #31, #I3244：\n",
+      confirmCommit: "是否提交或修改commit？"
+    },
     questions: {
       type: {
         description: "<类型> 选择您要提交的更改类型：",
